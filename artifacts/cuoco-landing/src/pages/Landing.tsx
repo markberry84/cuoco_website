@@ -313,10 +313,10 @@ export default function Landing() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm tracking-[0.35em] font-medium mb-6 uppercase"
-            style={{ color: "hsl(33 39% 40%)" }}
+            className="text-xl tracking-[0.22em] font-medium mb-6"
+            style={{ fontFamily: "'Newsreader', Georgia, serif", color: "hsl(33 39% 40%)" }}
           >
-            Cuoco
+            CUOCO
           </motion.p>
 
           {/* Headline */}
