@@ -469,12 +469,12 @@ export default function Landing() {
               return (
                 <FadeIn key={f.title} delay={0.05}>
                   <div
-                    className={`flex flex-col gap-10 items-center ${
+                    className={`flex flex-col gap-10 items-center justify-center ${
                       isEven ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                   >
                     {/* Text block */}
-                    <div className="flex-1 flex flex-col justify-center">
+                    <div className="flex flex-col justify-center w-full md:w-80"  style={{ maxWidth: 320 }}>
                       <div
                         className="w-11 h-11 rounded-xl flex items-center justify-center mb-6"
                         style={{ background: "hsl(33 39% 40%)", color: "hsl(40 50% 96%)" }}
