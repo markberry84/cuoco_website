@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { SiAppstore, SiGoogleplay } from "react-icons/si";
-import markPath from "@assets/cuoco-icon-1024_1777737495348.png";
+import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
 import {
   Accordion,
   AccordionContent,
