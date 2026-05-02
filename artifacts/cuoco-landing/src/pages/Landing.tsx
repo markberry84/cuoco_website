@@ -330,10 +330,10 @@ export default function Landing() {
               color: "hsl(33 16% 11%)",
             }}
           >
-            Cook with confidence.
+            Less scrolling.
             <br />
             <span style={{ color: "hsl(33 39% 40%)", fontStyle: "italic" }}>
-              Every meal, every time.
+              More cooking.
             </span>
           </motion.h1>
 
