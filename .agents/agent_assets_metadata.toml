@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "befmaNWikxHCYS1J9fG_D"
+uri = "file://README.md"
+type = "text"
+title = "Cuoco Landing Page — README"
