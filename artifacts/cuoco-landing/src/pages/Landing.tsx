@@ -5,7 +5,6 @@ import {
   Sparkles,
   Camera,
   CalendarDays,
-  BookOpen,
   ChevronDown,
   Mail,
   Menu,
@@ -62,8 +61,8 @@ const FEATURES = [
   },
   {
     icon: Sparkles,
-    title: "AI Recipe Creation",
-    desc: "Generate recipes tailored to what's in your fridge. Every result includes nutrition facts and allergen info.",
+    title: "AI-Powered Recipes",
+    desc: "Add nutritional info, meal and cuisine-type, and allergen information to every recipe.",
   },
   {
     icon: Camera,
@@ -72,13 +71,8 @@ const FEATURES = [
   },
   {
     icon: CalendarDays,
-    title: "Meal Planner",
-    desc: "Plan your week in minutes. Drag, drop, and let Cuoco generate a smart shopping list from your plan.",
-  },
-  {
-    icon: BookOpen,
-    title: "Recipe Collections",
-    desc: "Organise recipes into beautiful collections. Share them, print them, or keep them just for you.",
+    title: "Collect and Plan",
+    desc: "Organize recipes into collections. Plan your days, weeks and month in minutes.",
   },
 ];
 
