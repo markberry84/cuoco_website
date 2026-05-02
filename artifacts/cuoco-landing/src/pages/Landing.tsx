@@ -463,54 +463,98 @@ export default function Landing() {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FEATURES.map((f, i) => (
-              <FadeIn key={f.title} delay={i * 0.08}>
-                <div
-                  data-testid={`feature-card-${i}`}
-                  className="group p-7 rounded-2xl border h-full transition-all duration-300 cursor-default"
-                  style={{
-                    background: "hsl(38 33% 91%)",
-                    borderColor: "hsl(36 18% 84%)",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-                    el.style.borderColor = "hsl(33 39% 40%)";
-                    el.style.boxShadow = "0 8px 24px rgba(138,110,63,0.12)";
-                    el.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-                    el.style.borderColor = "hsl(36 18% 84%)";
-                    el.style.boxShadow = "none";
-                    el.style.transform = "translateY(0)";
-                  }}
-                >
+          <div className="flex flex-col gap-20">
+            {FEATURES.map((f, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <FadeIn key={f.title} delay={0.05}>
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: "hsl(33 39% 40%)", color: "hsl(40 50% 96%)" }}
+                    className={`flex flex-col gap-10 items-center ${
+                      isEven ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
                   >
-                    <f.icon className="w-5 h-5" />
+                    {/* Text block */}
+                    <div className="flex-1 flex flex-col justify-center">
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center mb-6"
+                        style={{ background: "hsl(33 39% 40%)", color: "hsl(40 50% 96%)" }}
+                      >
+                        <f.icon className="w-5 h-5" />
+                      </div>
+                      <h3
+                        className="text-3xl md:text-4xl mb-4"
+                        style={{
+                          fontFamily: "'Newsreader', Georgia, serif",
+                          fontWeight: 400,
+                          color: "hsl(33 16% 11%)",
+                        }}
+                      >
+                        {f.title}
+                      </h3>
+                      <p
+                        className="text-base leading-relaxed max-w-sm"
+                        style={{ color: "hsl(33 12% 45%)" }}
+                      >
+                        {f.desc}
+                      </p>
+                    </div>
+
+                    {/* Phone mockup placeholder */}
+                    <div
+                      data-testid={`feature-screenshot-${i}`}
+                      className="flex-shrink-0 flex items-center justify-center"
+                      style={{ width: 220 }}
+                    >
+                      <div
+                        className="relative w-full rounded-[2rem] p-1.5 shadow-xl"
+                        style={{ background: "hsl(33 16% 16%)" }}
+                      >
+                        {/* Speaker notch */}
+                        <div
+                          className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full"
+                          style={{ background: "hsl(33 14% 25%)" }}
+                        />
+                        {/* Screen */}
+                        <div
+                          className="rounded-[1.6rem] flex flex-col items-center justify-center gap-3"
+                          style={{
+                            background: "linear-gradient(160deg, hsl(38 33% 94%) 0%, hsl(35 28% 86%) 100%)",
+                            minHeight: 380,
+                            padding: "2.5rem 1.25rem 2rem",
+                          }}
+                        >
+                          <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center mb-1"
+                            style={{
+                              background: "hsla(33, 39%, 40%, 0.12)",
+                              color: "hsl(33 39% 40%)",
+                            }}
+                          >
+                            <f.icon className="w-5 h-5" />
+                          </div>
+                          <p
+                            className="text-xs text-center leading-relaxed"
+                            style={{
+                              fontFamily: "'Newsreader', serif",
+                              fontStyle: "italic",
+                              color: "hsl(33 16% 45%)",
+                            }}
+                          >
+                            Screenshot
+                            <br />
+                            coming soon
+                          </p>
+                          <div
+                            className="w-8 h-px rounded-full mt-1"
+                            style={{ background: "hsl(33 39% 65%)" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h3
-                    className="text-xl mb-3"
-                    style={{
-                      fontFamily: "'Newsreader', Georgia, serif",
-                      fontWeight: 500,
-                      color: "hsl(33 16% 11%)",
-                    }}
-                  >
-                    {f.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "hsl(33 12% 45%)" }}
-                  >
-                    {f.desc}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
