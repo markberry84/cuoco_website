@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { SiAppstore, SiGoogleplay } from "react-icons/si";
 import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
+import markDarkPath from "@assets/cuoco-icon-1024-dark_(1)_1777737495348.png";
 import {
   Accordion,
   AccordionContent,
@@ -658,11 +659,11 @@ export default function Landing() {
         <div className="relative max-w-2xl mx-auto text-center">
           <FadeIn>
             <img
-              src={markPath}
+              src={markDarkPath}
               alt="Cuoco"
               width={64}
               height={64}
-              className="w-16 h-16 mx-auto mb-6 opacity-80"
+              className="w-16 h-16 mx-auto mb-6 opacity-90"
             />
             <h2
               className="text-4xl md:text-5xl mb-4"
