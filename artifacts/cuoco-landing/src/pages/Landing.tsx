@@ -225,7 +225,6 @@ export default function Landing() {
                 {l.label}
               </a>
             ))}
-            <AppStoreButton store="apple" data-testid="nav-cta-appstore" />
           </nav>
 
           {/* Mobile hamburger */}
