@@ -1,0 +1,823 @@
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import {
+  Mic,
+  Sparkles,
+  Camera,
+  CalendarDays,
+  BookOpen,
+  ChevronDown,
+  Mail,
+  Menu,
+  X,
+} from "lucide-react";
+import { SiAppstore, SiGoogleplay } from "react-icons/si";
+import markPath from "@assets/cuoco-icon-1024_1777737495348.png";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+function useScrolled(threshold = 20) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const FEATURES = [
+  {
+    icon: Mic,
+    title: "Voice-Assisted Cooking",
+    desc: "Hands full of dough? No problem. Cuoco listens and guides you through every step, hands-free.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI Recipe Creation",
+    desc: "Generate recipes tailored to what's in your fridge. Every result includes nutrition facts and allergen info.",
+  },
+  {
+    icon: Camera,
+    title: "Import From Anywhere",
+    desc: "Snap a photo of a recipe card, paste a URL, or type it out. Cuoco captures it and makes it yours.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Meal Planner",
+    desc: "Plan your week in minutes. Drag, drop, and let Cuoco generate a smart shopping list from your plan.",
+  },
+  {
+    icon: BookOpen,
+    title: "Recipe Collections",
+    desc: "Organise recipes into beautiful collections. Share them, print them, or keep them just for you.",
+  },
+];
+
+const STEPS = [
+  {
+    num: "01",
+    title: "Add your recipes",
+    desc: "Import from a URL, snap a photo, or let AI generate something new. Your entire recipe life in one place.",
+  },
+  {
+    num: "02",
+    title: "Plan your week",
+    desc: "Drag recipes into your meal planner. Cuoco builds your shopping list automatically.",
+  },
+  {
+    num: "03",
+    title: "Cook with confidence",
+    desc: "Open any recipe, start the voice guide, and cook hands-free. Cuoco is right there with you.",
+  },
+];
+
+const FAQS = [
+  {
+    q: "What is Cuoco?",
+    a: "Cuoco is an AI-powered cooking companion app. It helps you discover, plan, and cook recipes with the help of an integrated voice assistant and smart AI tools.",
+  },
+  {
+    q: "Is it available on iOS and Android?",
+    a: "Yes — Cuoco will be available on both the Apple App Store and Google Play Store. Sign up to be notified when we launch.",
+  },
+  {
+    q: "Is there a free version?",
+    a: "We plan to offer a free tier with core features, alongside a premium subscription that unlocks advanced AI features and unlimited recipe imports.",
+  },
+  {
+    q: "How does the AI work?",
+    a: "Cuoco uses large language models to generate personalised recipes based on your ingredients, dietary preferences, and cooking style. All nutrition and allergen data is calculated automatically.",
+  },
+  {
+    q: "When does it launch?",
+    a: "We're putting the finishing touches on the app now. Follow us or reach out at hello@get-cuoco.app to stay in the loop.",
+  },
+];
+
+function AppStoreButton({
+  store,
+  "data-testid": testId,
+}: {
+  store: "apple" | "google";
+  "data-testid": string;
+}) {
+  const isApple = store === "apple";
+  return (
+    <a
+      href="#"
+      data-testid={testId}
+      className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border transition-all duration-200 group"
+      style={{
+        background: "hsl(33 16% 11%)",
+        borderColor: "hsl(33 14% 20%)",
+        color: "hsl(38 33% 91%)",
+      }}
+    >
+      <span
+        className="text-2xl transition-transform duration-200 group-hover:scale-110"
+        style={{ color: "hsl(35 32% 60%)" }}
+      >
+        {isApple ? <SiAppstore /> : <SiGoogleplay />}
+      </span>
+      <span className="flex flex-col leading-tight text-left">
+        <span className="text-xs opacity-70">
+          {isApple ? "Download on the" : "Get it on"}
+        </span>
+        <span className="text-sm font-medium tracking-wide">
+          {isApple ? "App Store" : "Google Play"}
+        </span>
+      </span>
+    </a>
+  );
+}
+
+export default function Landing() {
+  const scrolled = useScrolled();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navLinks = [
+    { href: "#features", label: "Features" },
+    { href: "#how-it-works", label: "How it works" },
+    { href: "#download", label: "Download" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#contact", label: "Contact" },
+  ];
+
+  return (
+    <div className="min-h-screen" style={{ background: "hsl(38 33% 91%)" }}>
+      {/* NAV */}
+      <header
+        data-testid="header-nav"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled
+            ? "hsla(38, 33%, 91%, 0.95)"
+            : "hsla(38, 33%, 91%, 0.0)",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          borderBottom: scrolled
+            ? "1px solid hsl(36 18% 80%)"
+            : "1px solid transparent",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-3" aria-label="Cuoco home">
+            <img
+              src={markPath}
+              alt="Cuoco mark"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
+            <span
+              className="text-xl tracking-[0.22em] font-medium"
+              style={{ fontFamily: "'Newsreader', Georgia, serif", color: "hsl(33 16% 11%)" }}
+            >
+              CUOCO
+            </span>
+          </a>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                data-testid={`nav-link-${l.label.toLowerCase().replace(/\s/g, "-")}`}
+                className="text-sm transition-colors duration-150"
+                style={{ color: "hsl(33 12% 45%)" }}
+                onMouseEnter={(e) =>
+                  ((e.target as HTMLElement).style.color = "hsl(33 39% 40%)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.target as HTMLElement).style.color = "hsl(33 12% 45%)")
+                }
+              >
+                {l.label}
+              </a>
+            ))}
+            <AppStoreButton store="apple" data-testid="nav-cta-appstore" />
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2 rounded-lg"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            data-testid="button-mobile-menu"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <X className="w-5 h-5" style={{ color: "hsl(33 16% 11%)" }} />
+            ) : (
+              <Menu className="w-5 h-5" style={{ color: "hsl(33 16% 11%)" }} />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden"
+              style={{
+                background: "hsl(38 33% 91%)",
+                borderTop: "1px solid hsl(36 18% 80%)",
+              }}
+            >
+              <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
+                {navLinks.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s/g, "-")}`}
+                    className="text-base py-1"
+                    style={{ color: "hsl(33 16% 11%)" }}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {l.label}
+                  </a>
+                ))}
+                <div className="flex gap-3 pt-2">
+                  <AppStoreButton store="apple" data-testid="mobile-cta-appstore" />
+                  <AppStoreButton store="google" data-testid="mobile-cta-google" />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 55% at 50% 40%, hsla(33, 39%, 40%, 0.10) 0%, transparent 70%)",
+          }}
+        />
+
+        <div className="relative max-w-4xl mx-auto text-center">
+          {/* Logo mark */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center mb-8"
+          >
+            <img
+              src={markPath}
+              alt="Cuoco"
+              width={80}
+              height={80}
+              className="w-20 h-20"
+            />
+          </motion.div>
+
+          {/* Wordmark */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-sm tracking-[0.35em] font-medium mb-6 uppercase"
+            style={{ color: "hsl(33 39% 40%)" }}
+          >
+            Cuoco
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl leading-[1.1] mb-6"
+            style={{
+              fontFamily: "'Newsreader', Georgia, serif",
+              fontWeight: 400,
+              color: "hsl(33 16% 11%)",
+            }}
+          >
+            Cook with confidence.
+            <br />
+            <span style={{ color: "hsl(33 39% 40%)", fontStyle: "italic" }}>
+              Every meal, every time.
+            </span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35 }}
+            className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+            style={{ color: "hsl(33 12% 45%)" }}
+          >
+            Your AI-powered cooking companion with a built-in voice assistant.
+            Discover, plan, and cook — hands-free.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.5 }}
+            className="flex flex-wrap gap-4 justify-center mb-16"
+          >
+            <AppStoreButton store="apple" data-testid="hero-cta-appstore" />
+            <AppStoreButton store="google" data-testid="hero-cta-google" />
+          </motion.div>
+
+          {/* Phone mockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mx-auto"
+            style={{ maxWidth: 320 }}
+          >
+            {/* Outer glow */}
+            <div
+              className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-30"
+              style={{ background: "hsl(33 39% 40%)" }}
+            />
+            {/* Phone shell */}
+            <div
+              className="relative mx-auto w-64 md:w-72 rounded-[2.5rem] p-2 shadow-2xl"
+              style={{ background: "hsl(33 16% 16%)" }}
+            >
+              {/* Speaker notch */}
+              <div
+                className="absolute top-5 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
+                style={{ background: "hsl(33 14% 25%)" }}
+              />
+              {/* Screen */}
+              <div
+                className="rounded-[2rem] overflow-hidden"
+                style={{
+                  background: "linear-gradient(160deg, hsl(38 33% 94%) 0%, hsl(35 32% 84%) 50%, hsl(33 39% 75%) 100%)",
+                  minHeight: 480,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 16,
+                  padding: "2rem 1.5rem",
+                }}
+              >
+                <img
+                  src={markPath}
+                  alt="Cuoco app"
+                  width={64}
+                  height={64}
+                  className="w-16 h-16 opacity-60"
+                />
+                <p
+                  className="text-center text-sm leading-relaxed"
+                  style={{ color: "hsl(33 16% 25%)", fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
+                >
+                  Screenshots coming soon
+                </p>
+                <div
+                  className="w-12 h-0.5 rounded-full"
+                  style={{ background: "hsl(33 39% 55%)" }}
+                />
+                <p
+                  className="text-center text-xs"
+                  style={{ color: "hsl(33 12% 45%)" }}
+                >
+                  Available on iOS & Android
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          style={{ color: "hsl(33 12% 55%)" }}
+        >
+          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-4 h-4" />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* FEATURES */}
+      <section
+        id="features"
+        className="py-24 px-6"
+        style={{ background: "hsl(40 50% 96%)" }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="text-center mb-16">
+            <p
+              className="text-xs tracking-[0.3em] uppercase font-medium mb-4"
+              style={{ color: "hsl(33 39% 40%)" }}
+            >
+              Features
+            </p>
+            <h2
+              className="text-4xl md:text-5xl"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontWeight: 400,
+                color: "hsl(33 16% 11%)",
+              }}
+            >
+              Everything your kitchen needs
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {FEATURES.map((f, i) => (
+              <FadeIn key={f.title} delay={i * 0.08}>
+                <div
+                  data-testid={`feature-card-${i}`}
+                  className="group p-7 rounded-2xl border h-full transition-all duration-300 cursor-default"
+                  style={{
+                    background: "hsl(38 33% 91%)",
+                    borderColor: "hsl(36 18% 84%)",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+                    el.style.borderColor = "hsl(33 39% 40%)";
+                    el.style.boxShadow = "0 8px 24px rgba(138,110,63,0.12)";
+                    el.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget;
+                    el.style.borderColor = "hsl(36 18% 84%)";
+                    el.style.boxShadow = "none";
+                    el.style.transform = "translateY(0)";
+                  }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                    style={{ background: "hsl(33 39% 40%)", color: "hsl(40 50% 96%)" }}
+                  >
+                    <f.icon className="w-5 h-5" />
+                  </div>
+                  <h3
+                    className="text-xl mb-3"
+                    style={{
+                      fontFamily: "'Newsreader', Georgia, serif",
+                      fontWeight: 500,
+                      color: "hsl(33 16% 11%)",
+                    }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "hsl(33 12% 45%)" }}
+                  >
+                    {f.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section
+        id="how-it-works"
+        className="py-24 px-6"
+        style={{ background: "hsl(38 33% 91%)" }}
+      >
+        <div className="max-w-4xl mx-auto">
+          <FadeIn className="text-center mb-16">
+            <p
+              className="text-xs tracking-[0.3em] uppercase font-medium mb-4"
+              style={{ color: "hsl(33 39% 40%)" }}
+            >
+              How it works
+            </p>
+            <h2
+              className="text-4xl md:text-5xl"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontWeight: 400,
+                color: "hsl(33 16% 11%)",
+              }}
+            >
+              From pantry to plate
+            </h2>
+          </FadeIn>
+
+          <div className="relative flex flex-col gap-0">
+            {/* Connector line */}
+            <div
+              className="absolute left-6 md:left-8 top-8 bottom-8 w-px hidden md:block"
+              style={{ background: "hsl(36 18% 78%)" }}
+            />
+
+            {STEPS.map((step, i) => (
+              <FadeIn key={step.num} delay={i * 0.12}>
+                <div className="flex gap-8 md:gap-12 items-start pb-12 last:pb-0">
+                  {/* Step number */}
+                  <div className="flex-shrink-0 relative z-10">
+                    <div
+                      className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "hsl(40 50% 96%)",
+                        border: "1px solid hsl(36 18% 78%)",
+                      }}
+                    >
+                      <span
+                        className="text-sm font-medium tracking-wider"
+                        style={{
+                          fontFamily: "'Newsreader', Georgia, serif",
+                          color: "hsl(33 39% 40%)",
+                        }}
+                      >
+                        {step.num}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="pt-2">
+                    <h3
+                      className="text-2xl mb-2"
+                      style={{
+                        fontFamily: "'Newsreader', Georgia, serif",
+                        fontWeight: 500,
+                        color: "hsl(33 16% 11%)",
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    <p
+                      className="text-base leading-relaxed"
+                      style={{ color: "hsl(33 12% 45%)" }}
+                    >
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DOWNLOAD SECTION */}
+      <section
+        id="download"
+        className="py-24 px-6 relative overflow-hidden"
+        style={{ background: "hsl(33 16% 11%)" }}
+      >
+        {/* Decorative glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 60% at 50% 50%, hsla(33, 39%, 40%, 0.25) 0%, transparent 70%)",
+          }}
+        />
+
+        <div className="relative max-w-2xl mx-auto text-center">
+          <FadeIn>
+            <img
+              src={markPath}
+              alt="Cuoco"
+              width={64}
+              height={64}
+              className="w-16 h-16 mx-auto mb-6 opacity-80"
+            />
+            <h2
+              className="text-4xl md:text-5xl mb-4"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontWeight: 400,
+                color: "hsl(38 33% 91%)",
+              }}
+            >
+              Ready to cook smarter?
+            </h2>
+            <p
+              className="text-lg mb-10 leading-relaxed"
+              style={{ color: "hsl(36 18% 65%)" }}
+            >
+              Cuoco is coming soon to iOS and Android. Join the waitlist or grab
+              it the moment it launches.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <AppStoreButton store="apple" data-testid="download-cta-appstore" />
+              <AppStoreButton store="google" data-testid="download-cta-google" />
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section
+        id="faq"
+        className="py-24 px-6"
+        style={{ background: "hsl(40 50% 96%)" }}
+      >
+        <div className="max-w-2xl mx-auto">
+          <FadeIn className="text-center mb-12">
+            <p
+              className="text-xs tracking-[0.3em] uppercase font-medium mb-4"
+              style={{ color: "hsl(33 39% 40%)" }}
+            >
+              FAQ
+            </p>
+            <h2
+              className="text-4xl md:text-5xl"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontWeight: 400,
+                color: "hsl(33 16% 11%)",
+              }}
+            >
+              Questions answered
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <Accordion type="single" collapsible className="space-y-3">
+              {FAQS.map((item, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  data-testid={`faq-item-${i}`}
+                  className="rounded-xl border overflow-hidden"
+                  style={{
+                    borderColor: "hsl(36 18% 84%)",
+                    background: "hsl(38 33% 91%)",
+                  }}
+                >
+                  <AccordionTrigger
+                    data-testid={`faq-trigger-${i}`}
+                    className="px-6 py-4 text-left hover:no-underline text-base font-medium"
+                    style={{
+                      fontFamily: "'Newsreader', Georgia, serif",
+                      color: "hsl(33 16% 11%)",
+                    }}
+                  >
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent
+                    className="px-6 pb-5 text-sm leading-relaxed"
+                    style={{ color: "hsl(33 12% 45%)" }}
+                  >
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        id="contact"
+        className="py-24 px-6"
+        style={{ background: "hsl(38 33% 91%)" }}
+      >
+        <div className="max-w-xl mx-auto text-center">
+          <FadeIn>
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6"
+              style={{ background: "hsl(40 50% 96%)", border: "1px solid hsl(36 18% 80%)" }}
+            >
+              <Mail className="w-5 h-5" style={{ color: "hsl(33 39% 40%)" }} />
+            </div>
+            <h2
+              className="text-4xl mb-4"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontWeight: 400,
+                color: "hsl(33 16% 11%)",
+              }}
+            >
+              Get in touch
+            </h2>
+            <p
+              className="text-base mb-8 leading-relaxed"
+              style={{ color: "hsl(33 12% 45%)" }}
+            >
+              Have questions, feedback, or just want to say hello? We would love to
+              hear from you.
+            </p>
+            <a
+              href="mailto:hello@get-cuoco.app"
+              data-testid="link-contact-email"
+              className="inline-flex items-center gap-2 text-lg font-medium transition-all duration-200 group"
+              style={{ color: "hsl(33 39% 40%)" }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget.style.color = "hsl(33 39% 30%)")
+              )}
+              onMouseLeave={(e) =>
+                ((e.currentTarget.style.color = "hsl(33 39% 40%)")
+              )}
+            >
+              <span
+                className="border-b transition-all duration-200"
+                style={{ borderColor: "hsla(33, 39%, 40%, 0.3)" }}
+              >
+                hello@get-cuoco.app
+              </span>
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer
+        style={{
+          background: "hsl(33 16% 11%)",
+          borderTop: "1px solid hsl(33 14% 20%)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src={markPath}
+              alt="Cuoco"
+              width={28}
+              height={28}
+              className="w-7 h-7 opacity-70"
+            />
+            <span
+              className="text-base tracking-[0.22em] font-medium"
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                color: "hsl(36 18% 65%)",
+              }}
+            >
+              CUOCO
+            </span>
+          </div>
+
+          <p
+            className="text-xs"
+            style={{ color: "hsl(33 12% 45%)" }}
+          >
+            &copy; 2025 Cuoco. All rights reserved.
+          </p>
+
+          <a
+            href="mailto:hello@get-cuoco.app"
+            data-testid="footer-contact-email"
+            className="text-xs transition-colors duration-150"
+            style={{ color: "hsl(33 12% 45%)" }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget.style.color = "hsl(35 32% 60%)")
+            )}
+            onMouseLeave={(e) =>
+              ((e.currentTarget.style.color = "hsl(33 12% 45%)")
+            )}
+          >
+            hello@get-cuoco.app
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
+}
