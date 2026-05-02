@@ -62,7 +62,7 @@ const FEATURES = [
   {
     icon: Sparkles,
     title: "AI-Powered Recipes",
-    desc: "Add nutritional info, meal and cuisine-type, and allergen information to every recipe.",
+    desc: "Add nutritional info, meal and cuisine-type, and allergen information to any recipe — automatically.",
   },
   {
     icon: Camera,
@@ -80,17 +80,17 @@ const STEPS = [
   {
     num: "01",
     title: "Add your recipes",
-    desc: "Import from a URL, snap a photo, or let AI generate something new. Your entire recipe life in one place.",
+    desc: "Import from a URL, snap a photo, paste in text or create something new. Enhance it with AI.",
   },
   {
     num: "02",
-    title: "Plan your week",
-    desc: "Drag recipes into your meal planner. Cuoco builds your shopping list automatically.",
+    title: "Plan your meals",
+    desc: "Add recipes to your meal planner across days, weeks and months.",
   },
   {
     num: "03",
-    title: "Cook with confidence",
-    desc: "Open any recipe, start the voice guide, and cook hands-free. Cuoco is right there with you.",
+    title: "Cook hands-free",
+    desc: "Open any recipe and Cuoco is right there with you to guide and help make every dish.",
   },
 ];
 
