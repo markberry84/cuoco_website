@@ -537,7 +537,7 @@ export default function Landing() {
                 color: "hsl(33 16% 11%)",
               }}
             >
-              From pantry to plate
+              From phone to plate
             </h2>
           </FadeIn>
 
