@@ -460,7 +460,7 @@ export default function Landing() {
                 color: "hsl(33 16% 11%)",
               }}
             >
-              Everything your kitchen needs
+              Your very own <em>cuoco</em>, whenever you need them
             </h2>
           </FadeIn>
 
