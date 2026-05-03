@@ -99,26 +99,58 @@ const STEPS = [
   },
 ];
 
-const FAQS = [
+const FAQS: { q: string; content: React.ReactNode }[] = [
   {
     q: "What is Cuoco?",
-    a: "Cuoco is an AI-powered cooking companion app. It helps you discover, plan, and cook recipes with the help of an integrated voice assistant and smart AI tools.",
+    content: (
+      <p>Cuoco is an AI-powered cooking companion app. It helps you discover, plan, and cook recipes with the help of an integrated voice assistant and smart AI tools.</p>
+    ),
   },
   {
-    q: "Is it available on iOS and Android?",
-    a: "Yes — Cuoco will be available on both the Apple App Store and Google Play Store. Sign up to be notified when we launch.",
+    q: "What are the different paid plans?",
+    content: (
+      <p>Start with a free 7-day trial and try out all Cuoco's features. Then, most people will be fine on our core plan (£2.99 per month). Our premium plan (£4.99 per month) is targeted at heavy voice users. The only difference in the plans is the usage cap, which is 100% higher on the premium plan compared to core.</p>
+    ),
   },
   {
-    q: "Is there a free version?",
-    a: "We plan to offer a free tier with core features, alongside a premium subscription that unlocks advanced AI features and unlimited recipe imports.",
+    q: "How does usage work?",
+    content: (
+      <>
+        <p>Usage is based on using Cuoco's AI features. Adding recipes, calculating nutrition and speaking to Cuoco all count towards your monthly allowance. Browsing and cooking recipes manually doesn't consume usage.</p>
+        <p className="mt-3">You can track your monthly usage in the Settings page.</p>
+      </>
+    ),
   },
   {
-    q: "How does the AI work?",
-    a: "Cuoco uses large language models to generate personalised recipes based on your ingredients, dietary preferences, and cooking style. All nutrition and allergen data is calculated automatically.",
+    q: "What are the AI features in Cuoco?",
+    content: (
+      <>
+        <p>Cuoco uses AI to:</p>
+        <ul className="mt-3 flex flex-col gap-2">
+          {[
+            "Import recipes from photos, URLs, and text — including multiple photos where a recipe spans multiple pages.",
+            "Categorise meals and detect allergen information automatically.",
+            "Calculate nutritional information based on ingredients.",
+            "Transcribe your voice so you can control the app hands-free.",
+            "Answer your cooking questions in real time while you cook.",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: "hsl(33 39% 40%)" }} />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ),
   },
   {
-    q: "When does it launch?",
-    a: "We're putting the finishing touches on the app now. Follow us or reach out at hello@get-cuoco.app to stay in the loop.",
+    q: "Is my data and privacy secure with Cuoco?",
+    content: (
+      <>
+        <p>Yes. Your recipes and personal information are stored securely in an encrypted database and are never shared with third parties. Cuoco uses industry-standard authentication to protect your account, and your data is only ever used to power your own experience — never to train AI models or for advertising purposes.</p>
+        <p className="mt-3">When you use voice features, your audio is transcribed and then discarded — we don't store recordings of your voice.</p>
+      </>
+    ),
   },
 ];
 
@@ -774,7 +806,7 @@ export default function Landing() {
                     className="px-6 pb-5 text-sm leading-relaxed"
                     style={{ color: "hsl(33 12% 45%)" }}
                   >
-                    {item.a}
+                    {item.content}
                   </AccordionContent>
                 </AccordionItem>
               ))}
