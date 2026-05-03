@@ -58,7 +58,7 @@ const FEATURES = [
   {
     icon: Mic,
     title: "Voice-Assisted Cooking",
-    desc: "Hands full of dough? No problem. Cuoco listens and guides you through every step, hands-free.",
+    desc: "Hands full of dough? No problem. Cuoco can find recipes, guide cooking and answer questions, hands-free.",
   },
   {
     icon: Sparkles,
