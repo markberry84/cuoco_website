@@ -460,7 +460,7 @@ export default function Landing() {
                 color: "hsl(33 16% 11%)",
               }}
             >
-              Your very own <em>cuoco</em>, on demand
+              Meet your <em>cuoco</em>
             </h2>
           </FadeIn>
 
