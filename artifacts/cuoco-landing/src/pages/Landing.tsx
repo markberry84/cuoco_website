@@ -59,6 +59,10 @@ const FEATURES = [
     icon: Mic,
     title: "Voice-Assisted Cooking",
     desc: "Hands full of dough? No problem. Cuoco can find recipes, guide cooking and answer questions, hands-free.",
+    examples: [
+      "Find me dinner recipes I can cook in under 30 minutes.",
+      "I am out of paprika, what's a good substitute?",
+    ],
   },
   {
     icon: Sparkles,
@@ -475,7 +479,7 @@ export default function Landing() {
                     }`}
                   >
                     {/* Text block */}
-                    <div className="flex flex-col justify-center w-full md:w-80"  style={{ maxWidth: 320 }}>
+                    <div className="flex flex-col justify-start pt-4 w-full md:w-80" style={{ maxWidth: 320 }}>
                       <div
                         className="w-11 h-11 rounded-xl flex items-center justify-center mb-6"
                         style={{ background: "hsl(33 39% 40%)", color: "hsl(40 50% 96%)" }}
@@ -493,11 +497,38 @@ export default function Landing() {
                         {f.title}
                       </h3>
                       <p
-                        className="text-base leading-relaxed max-w-sm"
+                        className="text-base leading-relaxed"
                         style={{ color: "hsl(33 12% 45%)" }}
                       >
                         {f.desc}
                       </p>
+                      {f.examples && (
+                        <ul className="mt-5 flex flex-col gap-3">
+                          {f.examples.map((ex) => (
+                            <li
+                              key={ex}
+                              className="flex items-start gap-2"
+                            >
+                              <span
+                                className="mt-0.5 flex-shrink-0 w-4 h-4 flex items-center justify-center rounded-full"
+                                style={{ background: "hsla(33,39%,40%,0.12)" }}
+                              >
+                                <Mic className="w-2.5 h-2.5" style={{ color: "hsl(33 39% 40%)" }} />
+                              </span>
+                              <span
+                                className="text-sm leading-relaxed"
+                                style={{
+                                  fontFamily: "'Newsreader', Georgia, serif",
+                                  fontStyle: "italic",
+                                  color: "hsl(33 16% 35%)",
+                                }}
+                              >
+                                "{ex}"
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
 
                     {/* Phone mockup placeholder */}
