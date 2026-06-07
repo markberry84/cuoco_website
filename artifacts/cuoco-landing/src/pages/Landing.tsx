@@ -13,12 +13,25 @@ import {
 import { SiAppstore, SiGoogleplay } from "react-icons/si";
 import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
 import markDarkPath from "@assets/cuoco-icon-light-transparent.png";
+import screenshotRecipeList from "@assets/Recipe_List_Dark_1780859066605.png";
+import screenshotAIVoice from "@assets/AI_Voice_1780859066604.png";
+import screenshotRecipeDetail from "@assets/Recipe_Detail_Dark_1780859066603.png";
+import screenshotRecipeImport from "@assets/Recipe_Import_Dark_1780859066605.png";
+import screenshotPlanner from "@assets/Planner_Dark_1780859066604.png";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+const FEATURE_SCREENSHOTS = [
+  screenshotAIVoice,
+  screenshotRecipeDetail,
+  screenshotRecipeImport,
+  screenshotPlanner,
+];
 
 function useScrolled(threshold = 20) {
   const [scrolled, setScrolled] = useState(false);
@@ -417,40 +430,14 @@ export default function Landing() {
               {/* Screen */}
               <div
                 className="rounded-[2rem] overflow-hidden"
-                style={{
-                  background: "linear-gradient(160deg, hsl(38 33% 94%) 0%, hsl(35 32% 84%) 50%, hsl(33 39% 75%) 100%)",
-                  minHeight: 480,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 16,
-                  padding: "2rem 1.5rem",
-                }}
+                style={{ minHeight: 480 }}
               >
                 <img
-                  src={markPath}
-                  alt="Cuoco app"
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 opacity-60"
+                  src={screenshotRecipeList}
+                  alt="Cuoco recipe list"
+                  className="w-full h-full object-cover object-top"
+                  style={{ display: "block" }}
                 />
-                <p
-                  className="text-center text-sm leading-relaxed"
-                  style={{ color: "hsl(33 16% 25%)", fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
-                >
-                  Screenshots coming soon
-                </p>
-                <div
-                  className="w-12 h-0.5 rounded-full"
-                  style={{ background: "hsl(33 39% 55%)" }}
-                />
-                <p
-                  className="text-center text-xs"
-                  style={{ color: "hsl(33 12% 45%)" }}
-                >
-                  Available on iOS & Android
-                </p>
               </div>
             </div>
           </motion.div>
@@ -563,54 +550,28 @@ export default function Landing() {
                       )}
                     </div>
 
-                    {/* Phone mockup placeholder */}
+                    {/* Phone screenshot */}
                     <div
                       data-testid={`feature-screenshot-${i}`}
-                      className="flex-shrink-0 flex items-center justify-center"
+                      className="flex-shrink-0"
                       style={{ width: 220 }}
                     >
                       <div
-                        className="relative w-full rounded-[2rem] p-1.5 shadow-xl"
-                        style={{ background: "hsl(33 16% 16%)" }}
+                        className="relative w-full rounded-[2rem] p-1.5 shadow-2xl"
+                        style={{ background: "hsl(33 16% 10%)" }}
                       >
                         {/* Speaker notch */}
                         <div
-                          className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full"
-                          style={{ background: "hsl(33 14% 25%)" }}
+                          className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full z-10"
+                          style={{ background: "hsl(33 14% 20%)" }}
                         />
                         {/* Screen */}
-                        <div
-                          className="rounded-[1.6rem] flex flex-col items-center justify-center gap-3"
-                          style={{
-                            background: "linear-gradient(160deg, hsl(38 33% 94%) 0%, hsl(35 28% 86%) 100%)",
-                            minHeight: 380,
-                            padding: "2.5rem 1.25rem 2rem",
-                          }}
-                        >
-                          <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center mb-1"
-                            style={{
-                              background: "hsla(33, 39%, 40%, 0.12)",
-                              color: "hsl(33 39% 40%)",
-                            }}
-                          >
-                            <f.icon className="w-5 h-5" />
-                          </div>
-                          <p
-                            className="text-xs text-center leading-relaxed"
-                            style={{
-                              fontFamily: "'Newsreader', serif",
-                              fontStyle: "italic",
-                              color: "hsl(33 16% 45%)",
-                            }}
-                          >
-                            Screenshot
-                            <br />
-                            coming soon
-                          </p>
-                          <div
-                            className="w-8 h-px rounded-full mt-1"
-                            style={{ background: "hsl(33 39% 65%)" }}
+                        <div className="rounded-[1.6rem] overflow-hidden">
+                          <img
+                            src={FEATURE_SCREENSHOTS[i]}
+                            alt={f.title}
+                            className="w-full object-cover object-top"
+                            style={{ display: "block", height: 420 }}
                           />
                         </div>
                       </div>
