@@ -445,8 +445,8 @@ export default function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          style={{ color: "hsl(33 12% 55%)" }}
+          className="flex flex-col items-center gap-2 mt-10"
+          style={{ color: "hsl(33 16% 20%)" }}
         >
           <span className="text-xs tracking-widest uppercase">Scroll</span>
           <motion.div
