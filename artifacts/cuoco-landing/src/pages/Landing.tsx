@@ -428,14 +428,11 @@ export default function Landing() {
                 style={{ background: "hsl(33 14% 25%)" }}
               />
               {/* Screen */}
-              <div
-                className="rounded-[2rem] overflow-hidden"
-                style={{ minHeight: 480 }}
-              >
+              <div className="rounded-[2rem] overflow-hidden">
                 <img
                   src={screenshotRecipeList}
                   alt="Cuoco recipe list"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-auto"
                   style={{ display: "block" }}
                 />
               </div>
@@ -570,8 +567,8 @@ export default function Landing() {
                           <img
                             src={FEATURE_SCREENSHOTS[i]}
                             alt={f.title}
-                            className="w-full object-cover object-top"
-                            style={{ display: "block", height: 420 }}
+                            className="w-full h-auto"
+                            style={{ display: "block" }}
                           />
                         </div>
                       </div>
