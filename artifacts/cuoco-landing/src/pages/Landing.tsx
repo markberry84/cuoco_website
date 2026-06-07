@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "wouter";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Mic,
@@ -858,7 +859,16 @@ export default function Landing() {
             className="text-xs"
             style={{ color: "hsl(33 12% 45%)" }}
           >
-            &copy; 2025 Cuoco. All rights reserved.
+            &copy; 2025 Cuoco. All rights reserved. &nbsp;·&nbsp;{" "}
+            <Link
+              href="/privacy"
+              className="transition-colors duration-150"
+              style={{ color: "hsl(33 12% 45%)" }}
+              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(35 32% 60%)")}
+              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(33 12% 45%)")}
+            >
+              Privacy Policy
+            </Link>
           </p>
 
           <a
