@@ -17,7 +17,7 @@ import screenshotRecipeList from "@assets/Recipe_List_Dark_1780859066605.png";
 import screenshotAIVoice from "@assets/AI_Voice_1780859066604.png";
 import screenshotRecipeDetail from "@assets/Recipe_Detail_Dark_1780859066603.png";
 import screenshotRecipeImport from "@assets/Recipe_Import_Dark_1780859066605.png";
-import screenshotPlanner from "@assets/Planner_Dark_1780859066604.png";
+import screenshotPlanner from "@assets/Screenshot_2026-06-07_at_20.12.09_1780859542679.png";
 
 import {
   Accordion,
