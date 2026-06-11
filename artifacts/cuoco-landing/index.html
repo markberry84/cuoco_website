@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Cook with confidence. Every meal, every time. AI recipes, voice assistant, meal planning — all in one app." />
     <meta name="twitter:image" content="https://get-cuoco.app/opengraph.jpg" />
 
-    <!-- Structured data -->
+    <!-- Structured data: MobileApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,16 +32,107 @@
       "description": "An AI-powered cooking companion app with built-in voice assistant, recipe import, meal planning, and collections.",
       "url": "https://get-cuoco.app",
       "applicationCategory": "FoodApplication",
+      "applicationSubCategory": "Cooking",
       "operatingSystem": "iOS, Android",
+      "featureList": [
+        "AI voice assistant for hands-free cooking",
+        "Import recipes from photos, URLs, and text",
+        "Automatic allergen detection",
+        "Nutritional information calculation",
+        "Meal planner",
+        "Cook Mode with step-by-step guidance",
+        "Recipe collections"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "GBP",
+        "description": "Free 7-day trial, then from £2.99/month"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Mark Berry"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cuoco",
+        "url": "https://get-cuoco.app"
       }
     }
     </script>
 
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cuoco",
+      "url": "https://get-cuoco.app",
+      "logo": "https://get-cuoco.app/cuoco-icon-1024_1777737495348.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@get-cuoco.app",
+        "contactType": "customer support"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Mark Berry"
+      }
+    }
+    </script>
+
+    <!-- Structured data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Cuoco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuoco is an AI-powered cooking companion app. It helps you discover, plan, and cook recipes with the help of an integrated voice assistant and smart AI tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the different paid plans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with a free 7-day trial and try out all Cuoco's features. Then, most people will be fine on the core plan (£2.99 per month). The premium plan (£4.99 per month) is targeted at heavy voice users. The only difference between the plans is the usage cap, which is 100% higher on premium compared to core."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does usage work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usage is based on using Cuoco's AI features. Adding recipes, calculating nutrition, and speaking to Cuoco all count towards your monthly allowance. Browsing and cooking recipes manually doesn't consume usage. You can track your monthly usage in the Settings page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the AI features in Cuoco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuoco uses AI to: import recipes from photos, URLs, and text (including multi-page recipes); categorise meals and detect allergen information automatically; calculate nutritional information based on ingredients; transcribe your voice so you can control the app hands-free; and answer your cooking questions in real time while you cook."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data and privacy secure with Cuoco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Your recipes and personal information are stored securely in an encrypted database and are never shared with third parties. Cuoco uses industry-standard authentication to protect your account, and your data is only ever used to power your own experience — never to train AI models or for advertising purposes. When you use voice features, your audio is transcribed and then discarded — we don't store recordings of your voice."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="/cuoco-icon-1024_1777737495348.png" />
+    <link rel="apple-touch-icon" href="/cuoco-icon-1024_1777737495348.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
