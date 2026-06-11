@@ -37,8 +37,4 @@ router.post("/waitlist", (req, res) => {
   res.json({ ok: true });
 });
 
-router.get("/waitlist", (_req, res) => {
-  res.json({ emails: readEmails() });
-});
-
 export default router;
