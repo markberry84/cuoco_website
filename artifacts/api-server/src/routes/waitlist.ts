@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_PATH = path.join(__dirname, "..", "..", "data", "waitlist.json");
+const DATA_PATH = path.join(__dirname, "..", "data", "waitlist.json");
 
 const MAX_ENTRIES = 50_000;
 
