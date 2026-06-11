@@ -177,31 +177,42 @@ function AppStoreButton({
 }) {
   const isApple = store === "apple";
   return (
-    <a
-      href="#"
-      data-testid={testId}
-      className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border transition-all duration-200 group"
-      style={{
-        background: "hsl(33 16% 11%)",
-        borderColor: "hsl(33 14% 20%)",
-        color: "hsl(38 33% 91%)",
-      }}
-    >
-      <span
-        className="text-2xl transition-transform duration-200 group-hover:scale-110"
-        style={{ color: "hsl(35 32% 60%)" }}
+    <div className="relative inline-flex" data-testid={testId}>
+      <div
+        className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border select-none cursor-default"
+        style={{
+          background: "hsl(33 16% 11%)",
+          borderColor: "hsl(33 14% 20%)",
+          color: "hsl(38 33% 91%)",
+          opacity: 0.55,
+        }}
       >
-        {isApple ? <SiAppstore /> : <SiGoogleplay />}
-      </span>
-      <span className="flex flex-col leading-tight text-left">
-        <span className="text-xs opacity-70">
-          {isApple ? "Download on the" : "Get it on"}
+        <span
+          className="text-2xl"
+          style={{ color: "hsl(35 32% 60%)" }}
+        >
+          {isApple ? <SiAppstore /> : <SiGoogleplay />}
         </span>
-        <span className="text-sm font-medium tracking-wide">
-          {isApple ? "App Store" : "Google Play"}
+        <span className="flex flex-col leading-tight text-left">
+          <span className="text-xs opacity-70">
+            {isApple ? "Download on the" : "Get it on"}
+          </span>
+          <span className="text-sm font-medium tracking-wide">
+            {isApple ? "App Store" : "Google Play"}
+          </span>
         </span>
+      </div>
+      <span
+        className="absolute -top-2.5 -right-2.5 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide leading-none"
+        style={{
+          background: "hsl(33 39% 40%)",
+          color: "hsl(40 50% 96%)",
+          boxShadow: "0 1px 4px rgba(0,0,0,0.25)",
+        }}
+      >
+        Soon
       </span>
-    </a>
+    </div>
   );
 }
 
