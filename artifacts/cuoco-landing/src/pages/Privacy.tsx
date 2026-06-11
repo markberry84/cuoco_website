@@ -271,8 +271,10 @@ export default function Privacy() {
           color: "hsl(33 12% 45%)",
         }}
       >
-        &copy; 2025 Cuoco. All rights reserved. &nbsp;·&nbsp;{" "}
+        &copy; 2026 Cuoco. All rights reserved. &nbsp;·&nbsp;{" "}
         <Link href="/privacy" style={{ color: "hsl(33 39% 40%)" }}>Privacy Policy</Link>
+        &nbsp;·&nbsp;{" "}
+        <Link href="/terms" style={{ color: "hsl(33 39% 40%)" }}>Terms of Service</Link>
       </footer>
     </div>
   );
