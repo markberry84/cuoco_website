@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
-import { Resend } from "resend";
+import { ReplitConnectors } from "@replit/connectors-sdk";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, "..", "data", "waitlist.json");
@@ -28,23 +28,23 @@ async function saveEmails(emails: string[]): Promise<void> {
 }
 
 async function sendNotification(newEmail: string, total: number): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.warn("[waitlist] RESEND_API_KEY not set — skipping email notification");
-    return;
-  }
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
-    from: NOTIFY_FROM,
-    to: NOTIFY_TO,
-    subject: `New waitlist signup (#${total})`,
-    html: `
-      <p><strong>${newEmail}</strong> just joined the Cuoco waitlist.</p>
-      <p>Total signups: <strong>${total}</strong></p>
-    `,
-  });
-  if (error) {
-    console.error("[waitlist] Resend error:", error);
+  try {
+    const connectors = new ReplitConnectors();
+    const response = await connectors.proxy("resend", "/emails", {
+      method: "POST",
+      body: JSON.stringify({
+        from: NOTIFY_FROM,
+        to: [NOTIFY_TO],
+        subject: `New waitlist signup (#${total})`,
+        html: `<p><strong>${newEmail}</strong> just joined the Cuoco waitlist.</p><p>Total signups: <strong>${total}</strong></p>`,
+      }),
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      console.error("[waitlist] Resend error:", response.status, text);
+    }
+  } catch (err) {
+    console.error("[waitlist] sendNotification failed:", err);
   }
 }
 
