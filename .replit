@@ -34,3 +34,8 @@ externalPort = 3000
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+WAITLIST_EXPORT_TOKEN = "a403fb73a2aa51126f828979b293b21b0ce481c1f791372cc9951a69da285f2d"

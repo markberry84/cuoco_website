@@ -60,6 +60,24 @@ const waitlistLimiter = rateLimit({
 
 const router: IRouter = Router();
 
+router.get("/waitlist/export", (req, res) => {
+  const token = process.env.WAITLIST_EXPORT_TOKEN;
+  if (!token || req.query.token !== token) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  try {
+    const raw = fs.readFileSync(DATA_PATH, "utf-8");
+    const emails: string[] = JSON.parse(raw);
+    const csv = ["email", ...emails].join("\n");
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader("Content-Disposition", "attachment; filename=\"waitlist.csv\"");
+    res.send(csv);
+  } catch {
+    res.status(500).json({ error: "Could not read waitlist." });
+  }
+});
+
 router.post("/waitlist", waitlistLimiter, async (req, res) => {
   const email = (req.body?.email ?? "").toString().trim().toLowerCase();
   if (!EMAIL_RE.test(email)) {
