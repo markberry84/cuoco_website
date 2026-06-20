@@ -3,11 +3,15 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
+import { Resend } from "resend";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, "..", "data", "waitlist.json");
 
 const MAX_ENTRIES = 50_000;
+
+const NOTIFY_TO = "hello@get-cuoco.app";
+const NOTIFY_FROM = "Cuoco Waitlist <hello@get-cuoco.app>";
 
 async function readEmails(): Promise<string[]> {
   try {
@@ -21,6 +25,27 @@ async function readEmails(): Promise<string[]> {
 async function saveEmails(emails: string[]): Promise<void> {
   await fs.promises.mkdir(path.dirname(DATA_PATH), { recursive: true });
   await fs.promises.writeFile(DATA_PATH, JSON.stringify(emails, null, 2));
+}
+
+async function sendNotification(newEmail: string, total: number): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn("[waitlist] RESEND_API_KEY not set — skipping email notification");
+    return;
+  }
+  const resend = new Resend(apiKey);
+  const { error } = await resend.emails.send({
+    from: NOTIFY_FROM,
+    to: NOTIFY_TO,
+    subject: `New waitlist signup (#${total})`,
+    html: `
+      <p><strong>${newEmail}</strong> just joined the Cuoco waitlist.</p>
+      <p>Total signups: <strong>${total}</strong></p>
+    `,
+  });
+  if (error) {
+    console.error("[waitlist] Resend error:", error);
+  }
 }
 
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
@@ -49,9 +74,13 @@ router.post("/waitlist", waitlistLimiter, async (req, res) => {
     return;
   }
 
-  if (!emails.includes(email)) {
+  const isNew = !emails.includes(email);
+  if (isNew) {
     emails.push(email);
     await saveEmails(emails);
+    sendNotification(email, emails.length).catch((err) =>
+      console.error("[waitlist] sendNotification failed:", err)
+    );
   }
 
   res.json({ ok: true });
