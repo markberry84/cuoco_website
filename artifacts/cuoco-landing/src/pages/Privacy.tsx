@@ -51,7 +51,7 @@ export default function Privacy() {
           Privacy Policy
         </h1>
         <p className="text-sm mb-12" style={{ color: "hsl(33 12% 50%)" }}>
-          Last updated: 11 May 2026
+          Last updated: 22 July 2026
         </p>
 
         <div
@@ -116,13 +116,14 @@ export default function Privacy() {
             </SubSection>
 
             <SubSection title="3.5 Voice and AI Interactions">
-              <p>When you use the voice assistant or import a recipe, your input is processed by our AI providers (see Section 5). Specifically:</p>
+              <p>Recipe import (from a photo, link, or pasted text) and the voice assistant are optional AI-powered features, turned off by default. Before you can use them, we explain what data is sent and to whom, and ask for your explicit permission — either during onboarding or the first time you try to use one of these features. You can turn this on or off at any time in Settings.</p>
+              <p className="mt-3">When these features are enabled and you use them, your input is processed by our AI providers (see Section 5). Specifically:</p>
               <ul className="mt-3 flex flex-col gap-2">
-                <BulletItem>Voice recordings are transcribed and then discarded — we do not store audio files</BulletItem>
+                <BulletItem>Voice recordings are sent to OpenAI to be transcribed, and are then discarded — we do not store audio files</BulletItem>
                 <BulletItem>Recipe text, URLs, and photos submitted for import are sent to OpenAI for processing and are not retained by us beyond what is returned as a recipe</BulletItem>
-                <BulletItem>Cook Mode and voice assistant queries are sent to OpenAI for processing; we do not store the content of these conversations</BulletItem>
+                <BulletItem>Cook Mode and voice assistant queries are sent to OpenAI for processing; spoken responses are sent to ElevenLabs to generate speech; we do not store the content of these conversations</BulletItem>
               </ul>
-              <Legal>Contract — necessary to provide the AI-powered features you have requested.</Legal>
+              <Legal>Consent — these features only operate once you have given explicit permission, which you may withdraw at any time via Settings.</Legal>
             </SubSection>
 
             <SubSection title="3.6 Error Logs">
@@ -147,8 +148,8 @@ export default function Privacy() {
             <div className="mt-6 flex flex-col gap-6">
               {[
                 { name: "Supabase", role: "Database and authentication provider", data: "Email address, user ID, recipes, preferences, usage data, device data", location: "United Kingdom (London, eu-west-2)", url: "https://supabase.com/privacy" },
-                { name: "OpenAI", role: "AI processing for recipe import, voice transcription, cook mode, and the voice assistant", data: "Recipe text, URLs, photos submitted for import; voice transcriptions; voice assistant queries", location: "United States (OpenAI is subject to Standard Contractual Clauses for EU/UK data transfers)", url: "https://openai.com/privacy" },
-                { name: "ElevenLabs", role: "Text-to-speech voice synthesis for the voice assistant and Cook Mode", data: "Text strings sent for audio synthesis (recipe steps, assistant responses)", location: "United States", url: "https://elevenlabs.io/privacy" },
+                { name: "OpenAI", role: "AI processing for recipe import, voice transcription, cook mode, and the voice assistant (only when AI Features are enabled — see Section 3.5)", data: "Recipe text, URLs, photos submitted for import; voice transcriptions; voice assistant queries", location: "United States (OpenAI is subject to Standard Contractual Clauses for EU/UK data transfers)", url: "https://openai.com/privacy" },
+                { name: "ElevenLabs", role: "Text-to-speech voice synthesis for the voice assistant and Cook Mode (only when AI Features are enabled — see Section 3.5)", data: "Text strings sent for audio synthesis (recipe steps, assistant responses)", location: "United States", url: "https://elevenlabs.io/privacy" },
                 { name: "RevenueCat", role: "Subscription management and in-app purchase tracking", data: "User ID, email address, subscription status, purchase events", location: "United States", url: "https://www.revenuecat.com/privacy" },
                 { name: "Apple", role: "Payment processing (App Store), Sign In with Apple authentication", data: "Apple manages payments directly — we receive only subscription status events via RevenueCat. For Sign In with Apple, Apple provides us with your email address or a private relay address at your choice.", location: "United States", url: "https://www.apple.com/legal/privacy" },
                 { name: "Google", role: "Sign In with Google authentication", data: "Google provides us with your email address at sign-in. We store this solely for account identification and management.", location: "United States", url: "https://policies.google.com/privacy" },
