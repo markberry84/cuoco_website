@@ -53,7 +53,7 @@ export default function Terms() {
             Terms of Service
           </h1>
           <p className="text-sm" style={{ color: "hsl(33 12% 45%)" }}>
-            Last updated: 11 June 2026
+            Last updated: 22 July 2026
           </p>
         </div>
 
@@ -146,8 +146,8 @@ export default function Terms() {
             <SubSection title="8.2 Third-Party AI Services">
               <p>AI features are powered by third-party providers including OpenAI and ElevenLabs. The availability of these features depends on those providers' services remaining operational. We do not guarantee that AI features will be available at all times and are not liable for any interruption caused by a third-party provider.</p>
             </SubSection>
-            <SubSection title="8.3 Voice Features">
-              <p>When you use voice features, your voice input is transcribed and processed by our AI providers. Audio recordings are not retained after transcription. By using voice features, you consent to this processing. Further detail is set out in our{" "}
+            <SubSection title="8.3 Consent to AI Processing">
+              <p>Recipe import and voice features are optional and turned off by default. Before either is used, the app explains what data is sent and to which third-party provider, and asks for your explicit permission. You can grant or withdraw this permission at any time in Settings. When enabled, your voice input is transcribed and processed by our AI providers; audio recordings are not retained after transcription. Further detail is set out in our{" "}
                 <Link href="/privacy" style={{ color: "hsl(33 39% 40%)" }}>Privacy Policy</Link>.
               </p>
             </SubSection>
