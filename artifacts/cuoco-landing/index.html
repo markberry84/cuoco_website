@@ -68,7 +68,7 @@
       "@type": "Organization",
       "name": "Cuoco",
       "url": "https://get-cuoco.app",
-      "logo": "https://get-cuoco.app/cuoco-icon-1024_1777737495348.png",
+      "logo": "https://get-cuoco.app/favicon.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "hello@get-cuoco.app",
@@ -139,5 +139,109 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!--
+      Static content for search engine crawlers.
+      Google indexes this when JavaScript rendering is delayed or skipped.
+      Identical to what the React app renders — not cloaking.
+    -->
+    <noscript>
+      <main style="font-family: Georgia, serif; max-width: 860px; margin: 0 auto; padding: 2rem; color: #2a1f14;">
+        <header>
+          <h1>Cuoco — Less scrolling. More cooking.</h1>
+          <p>Your AI-powered cooking companion with a built-in voice assistant. Discover, plan, and cook — hands-free. Coming soon to iOS and Android.</p>
+        </header>
+
+        <section>
+          <h2>Features</h2>
+
+          <article>
+            <h3>Voice-Assisted Cooking</h3>
+            <p>Hands full of dough? No problem. Cuoco can find recipes, guide cooking and answer questions, hands-free.</p>
+            <ul>
+              <li>"Find me dinner recipes I can cook in under 30 minutes."</li>
+              <li>"I am out of paprika, what's a good substitute?"</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>AI-Powered Recipes</h3>
+            <p>Add nutritional info, meal and cuisine-type, and allergen information to any recipe — automatically.</p>
+          </article>
+
+          <article>
+            <h3>Import From Anywhere</h3>
+            <p>Snap a photo of a recipe card, paste a URL, or type it out. Cuoco captures it and makes it yours.</p>
+          </article>
+
+          <article>
+            <h3>Collect and Plan</h3>
+            <p>Organize recipes into collections. Plan your days, weeks and month in minutes.</p>
+          </article>
+        </section>
+
+        <section>
+          <h2>How it works</h2>
+          <ol>
+            <li><strong>Add your recipes</strong> — Import from a URL, snap a photo, paste in text or create something new. Enhance it with AI.</li>
+            <li><strong>Plan your meals</strong> — Add recipes to your meal planner across days, weeks and months.</li>
+            <li><strong>Cook hands-free</strong> — Open any recipe and Cuoco is right there with you to guide and help make every dish.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Pricing</h2>
+          <p>Start with a free 7-day trial. Then choose from:</p>
+          <ul>
+            <li><strong>Core — £2.99/month.</strong> Great for most home cooks.</li>
+            <li><strong>Premium — £4.99/month.</strong> 100% more AI usage, ideal for heavy voice users.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Frequently Asked Questions</h2>
+
+          <article>
+            <h3>What is Cuoco?</h3>
+            <p>Cuoco is an AI-powered cooking companion app. It helps you discover, plan, and cook recipes with the help of an integrated voice assistant and smart AI tools.</p>
+          </article>
+
+          <article>
+            <h3>What are the different paid plans?</h3>
+            <p>Start with a free 7-day trial and try out all Cuoco's features. Then, most people will be fine on our core plan (£2.99 per month). Our premium plan (£4.99 per month) is targeted at heavy voice users. The only difference in the plans is the usage cap, which is 100% higher on the premium plan compared to core.</p>
+          </article>
+
+          <article>
+            <h3>How does usage work?</h3>
+            <p>Usage is based on using Cuoco's AI features. Adding recipes, calculating nutrition and speaking to Cuoco all count towards your monthly allowance. Browsing and cooking recipes manually doesn't consume usage. You can track your monthly usage in the Settings page.</p>
+          </article>
+
+          <article>
+            <h3>What are the AI features in Cuoco?</h3>
+            <p>Cuoco uses AI to:</p>
+            <ul>
+              <li>Import recipes from photos, URLs, and text — including multiple photos where a recipe spans multiple pages.</li>
+              <li>Categorise meals and detect allergen information automatically.</li>
+              <li>Calculate nutritional information based on ingredients.</li>
+              <li>Transcribe your voice so you can control the app hands-free.</li>
+              <li>Answer your cooking questions in real time while you cook.</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Is my data and privacy secure with Cuoco?</h3>
+            <p>Yes. Your recipes and personal information are stored securely in an encrypted database and are never shared with third parties. Cuoco uses industry-standard authentication to protect your account, and your data is only ever used to power your own experience — never to train AI models or for advertising purposes. When you use voice features, your audio is transcribed and then discarded — we don't store recordings of your voice.</p>
+          </article>
+        </section>
+
+        <footer>
+          <p>Contact: <a href="mailto:hello@get-cuoco.app">hello@get-cuoco.app</a></p>
+          <nav>
+            <a href="/privacy">Privacy Policy</a> |
+            <a href="/terms">Terms of Service</a>
+          </nav>
+        </footer>
+      </main>
+    </noscript>
   </body>
 </html>
