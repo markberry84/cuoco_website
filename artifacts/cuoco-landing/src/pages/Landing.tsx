@@ -929,11 +929,16 @@ export default function Landing() {
               Get in touch
             </h2>
             <p
+              className="text-base mb-2 leading-relaxed"
+              style={{ color: "hsl(33 12% 45%)" }}
+            >
+              Have questions, feedback, or just want to say hello?
+            </p>
+            <p
               className="text-base mb-8 leading-relaxed"
               style={{ color: "hsl(33 12% 45%)" }}
             >
-              Have questions, feedback, or just want to say hello? We would love to
-              hear from you.
+              We would love to hear from you.
             </p>
             <a
               href="mailto:hello@get-cuoco.app"
