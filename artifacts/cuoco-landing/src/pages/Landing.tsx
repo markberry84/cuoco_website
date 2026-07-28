@@ -161,8 +161,9 @@ const FAQS: { q: string; content: React.ReactNode }[] = [
     q: "Is my data and privacy secure with Cuoco?",
     content: (
       <>
-        <p>Yes. Your recipes and personal information are stored securely in an encrypted database and are never shared with third parties. Cuoco uses industry-standard authentication to protect your account, and your data is only ever used to power your own experience — never to train AI models or for advertising purposes.</p>
+        <p>Yes. Your recipes and personal information are stored securely in an encrypted database and are never shared with third parties. Cuoco uses industry-standard authentication to protect your account, and your data is only ever used to power your own experience.</p>
         <p className="mt-3">When you use voice features, your audio is transcribed and then discarded — we don't store recordings of your voice.</p>
+        <p className="mt-3">Cuoco uses a combination of third-party tools to provide AI features including OpenAI and ElevenLabs.</p>
       </>
     ),
   },
