@@ -176,32 +176,62 @@ function AppStoreButton({
   "data-testid": string;
 }) {
   const isApple = store === "apple";
-  return (
-    <div className="relative inline-flex" data-testid={testId}>
-      <div
-        className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border select-none cursor-default"
-        style={{
-          background: "hsl(33 16% 11%)",
-          borderColor: "hsl(33 14% 20%)",
-          color: "hsl(38 33% 91%)",
-          opacity: 0.55,
+  const APPLE_URL = "https://apps.apple.com/us/app/cuoco/id6766098644";
+
+  const inner = (
+    <div
+      className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border select-none"
+      style={{
+        background: "hsl(33 16% 11%)",
+        borderColor: isApple ? "hsl(33 14% 30%)" : "hsl(33 14% 20%)",
+        color: "hsl(38 33% 91%)",
+        opacity: isApple ? 1 : 0.55,
+        cursor: isApple ? "pointer" : "default",
+        transition: "opacity 0.15s, border-color 0.15s",
+      }}
+    >
+      <span
+        className="text-2xl"
+        style={{ color: "hsl(35 32% 60%)" }}
+      >
+        {isApple ? <SiAppstore /> : <SiGoogleplay />}
+      </span>
+      <span className="flex flex-col leading-tight text-left">
+        <span className="text-xs opacity-70">
+          {isApple ? "Download on the" : "Get it on"}
+        </span>
+        <span className="text-sm font-medium tracking-wide">
+          {isApple ? "App Store" : "Google Play"}
+        </span>
+      </span>
+    </div>
+  );
+
+  if (isApple) {
+    return (
+      <a
+        href={APPLE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-testid={testId}
+        className="relative inline-flex"
+        onMouseEnter={(e) => {
+          const btn = e.currentTarget.querySelector("div") as HTMLElement;
+          if (btn) btn.style.borderColor = "hsl(33 39% 40%)";
+        }}
+        onMouseLeave={(e) => {
+          const btn = e.currentTarget.querySelector("div") as HTMLElement;
+          if (btn) btn.style.borderColor = "hsl(33 14% 30%)";
         }}
       >
-        <span
-          className="text-2xl"
-          style={{ color: "hsl(35 32% 60%)" }}
-        >
-          {isApple ? <SiAppstore /> : <SiGoogleplay />}
-        </span>
-        <span className="flex flex-col leading-tight text-left">
-          <span className="text-xs opacity-70">
-            {isApple ? "Download on the" : "Get it on"}
-          </span>
-          <span className="text-sm font-medium tracking-wide">
-            {isApple ? "App Store" : "Google Play"}
-          </span>
-        </span>
-      </div>
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <div className="relative inline-flex" data-testid={testId}>
+      {inner}
       <span
         className="absolute -top-2.5 -right-2.5 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide leading-none"
         style={{
@@ -799,14 +829,14 @@ export default function Landing() {
               className="text-lg mb-8 leading-relaxed"
               style={{ color: "hsl(36 18% 65%)" }}
             >
-              Coming soon to iOS and Android. Enter your email and we'll let you
-              know the moment Cuoco launches.
+              Available now for iOS from the App Store. To get notified when we
+              launch on Google Play Store, enter your email below.
             </p>
-            <WaitlistForm />
-            <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <div className="flex flex-wrap gap-4 justify-center mb-8">
               <AppStoreButton store="apple" data-testid="download-cta-appstore" />
               <AppStoreButton store="google" data-testid="download-cta-google" />
             </div>
+            <WaitlistForm />
           </FadeIn>
         </div>
       </section>
