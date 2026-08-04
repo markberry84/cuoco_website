@@ -123,7 +123,7 @@ const FAQS: { q: string; content: React.ReactNode }[] = [
   {
     q: "What are the different paid plans?",
     content: (
-      <p>Start with a free 7-day trial and try out all Cuoco's features. Then, most people will be fine on our core plan (£2.99 per month). Our premium plan (£4.99 per month) is targeted at heavy voice users. The only difference in the plans is the usage cap, which is 100% higher on the premium plan compared to core.</p>
+      <p>Start with a free 7-day trial and try out all Cuoco's features. Then, most people will be fine on the Pro plan (£2.99 per month). The Premium plan (£4.99 per month) is targeted at heavy voice users. The only difference between the plans is the usage cap, which is 150% higher on Premium compared to Pro.</p>
     ),
   },
   {
