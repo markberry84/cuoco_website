@@ -72,7 +72,7 @@ const FEATURES = [
   {
     icon: Mic,
     title: "Voice-Assisted Cooking",
-    desc: "Hands full of dough? No problem. Cuoco can find recipes, guide cooking and answer questions, hands-free.",
+    desc: "Hands full of dough? No problem. Press Ask Cuoco and find recipes, get guidance, and ask questions — no scrolling, no typing.",
     examples: [
       "Find me dinner recipes I can cook in under 30 minutes.",
       "I am out of paprika, what's a good substitute?",
@@ -108,7 +108,7 @@ const STEPS = [
   },
   {
     num: "03",
-    title: "Cook hands-free",
+    title: "Cook by voice",
     desc: "Open any recipe and Cuoco is right there with you to guide and help make every dish.",
   },
 ];
@@ -145,7 +145,7 @@ const FAQS: { q: string; content: React.ReactNode }[] = [
             "Import recipes from photos, URLs, and text — including multiple photos where a recipe spans multiple pages.",
             "Categorise meals and detect allergen information automatically.",
             "Calculate nutritional information based on ingredients.",
-            "Transcribe your voice so you can control the app hands-free.",
+            "Transcribe your voice so you can control the app by voice.",
             "Answer your cooking questions in real time while you cook.",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">
