@@ -493,7 +493,7 @@ export default function Landing() {
           </motion.p>
 
           {/* Headline */}
-          <motion.h1
+          <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -509,10 +509,10 @@ export default function Landing() {
             <span style={{ color: "hsl(33 39% 40%)", fontStyle: "italic" }}>
               More cooking.
             </span>
-          </motion.h1>
+          </motion.p>
 
           {/* Subheadline */}
-          <motion.p
+          <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.35 }}
@@ -521,7 +521,7 @@ export default function Landing() {
           >
             Your AI-powered cooking companion with a built-in voice assistant.
             Discover, plan, and cook — hands-free.
-          </motion.p>
+          </motion.h1>
 
           {/* CTA buttons */}
           <motion.div
