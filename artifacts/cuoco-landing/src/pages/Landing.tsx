@@ -11,7 +11,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { SiAppstore, SiGoogleplay, SiTiktok } from "react-icons/si";
+import { SiAppstore, SiGoogleplay, SiTiktok, SiInstagram } from "react-icons/si";
 import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
 import markDarkPath from "@assets/cuoco-icon-light-transparent.png";
 import screenshotRecipeList from "@assets/Recipe_List_Dark_1780859066605.png";
@@ -959,7 +959,31 @@ export default function Landing() {
                 hello@get-cuoco.app
               </span>
             </a>
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center gap-3 mt-6">
+              <a
+                href="https://www.instagram.com/getcuoco.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Cuoco on Instagram"
+                className="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+                style={{
+                  background: "hsl(40 50% 96%)",
+                  border: "1px solid hsl(36 18% 80%)",
+                  color: "hsl(33 16% 11%)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "hsl(33 16% 11%)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "hsl(33 16% 11%)";
+                  (e.currentTarget as HTMLElement).style.color = "hsl(40 50% 96%)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "hsl(40 50% 96%)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "hsl(36 18% 80%)";
+                  (e.currentTarget as HTMLElement).style.color = "hsl(33 16% 11%)";
+                }}
+              >
+                <SiInstagram className="w-4 h-4" />
+              </a>
               <a
                 href="https://www.tiktok.com/@getcuoco"
                 target="_blank"
