@@ -120,8 +120,9 @@ export default function Privacy() {
               <p className="mt-3">When these features are enabled and you use them, your input is processed by our AI providers (see Section 5). Specifically:</p>
               <ul className="mt-3 flex flex-col gap-2">
                 <BulletItem>Voice recordings are sent to OpenAI to be transcribed, and are then discarded — we do not store audio files</BulletItem>
+                <BulletItem>When you give a voice command that needs confirming, the microphone reopens for a few seconds so you can answer "yes" or "no" out loud. It closes on its own, only ever follows a command you have just given, and you can answer using the on-screen buttons instead</BulletItem>
                 <BulletItem>Recipe text, URLs, and photos submitted for import are sent to OpenAI for processing and are not retained by us beyond what is returned as a recipe</BulletItem>
-                <BulletItem>Cook Mode and voice assistant queries are sent to OpenAI for processing; spoken responses are sent to ElevenLabs to generate speech; we do not store the content of these conversations</BulletItem>
+                <BulletItem>Cook Mode and voice assistant queries are sent to OpenAI for processing; spoken responses are sent to ElevenLabs to generate speech. Within a single Cook Mode session, your recent questions and the assistant's answers are kept in memory and included with follow-up questions so it can understand them in context; this history is never stored, and is cleared when you end the session or close the app</BulletItem>
                 <BulletItem>Shopping list item names you add — whether typed manually or added by voice — along with your current shopping list, are sent to OpenAI to group similar items together and sort them into categories</BulletItem>
               </ul>
               <Legal>Consent — these features only operate once you have given explicit permission, which you may withdraw at any time via Settings.</Legal>
