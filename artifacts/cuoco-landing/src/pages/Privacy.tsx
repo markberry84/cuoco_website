@@ -51,7 +51,7 @@ export default function Privacy() {
           Privacy Policy
         </h1>
         <p className="text-sm mb-12" style={{ color: "hsl(33 12% 50%)" }}>
-          Last updated: 22 August 2026
+          Last updated: 30 September 2026
         </p>
 
         <div
@@ -147,6 +147,7 @@ export default function Privacy() {
 
           <Section title="5. Third-Party Services">
             <p>To provide Cuoco, we share data with the following third-party services. Each is contractually obligated to handle your data securely and in accordance with applicable law.</p>
+            <p className="mt-3"><strong style={{ color: "hsl(33 16% 11%)" }}>Wake word ("Hey Cuoco").</strong> If you turn this on, Cuoco listens for the phrase "Hey Cuoco" while Cook Mode is open. To recognise that phrase, your iPhone converts nearby speech into text using Apple's built-in on-device speech recognition. This happens entirely on your iPhone. No audio is recorded, saved, or sent to us or to OpenAI, and the text produced is discarded moment by moment as you speak — it is not stored and it never leaves your device. Only when you actually say "Hey Cuoco" is the question that follows sent to OpenAI to be answered, exactly as when you press the microphone button. The feature is off unless you switch it on, works only while Cook Mode is open, and stops the moment you leave that screen or switch to another app. When you turn it on, iOS shows Apple's standard speech recognition notice, which appears for every app that uses speech recognition.</p>
             <div className="mt-6 flex flex-col gap-6">
               {[
                 { name: "Supabase", role: "Database and authentication provider", data: "Email address, user ID, recipes, preferences, usage data, device data", location: "United Kingdom (London, eu-west-2)", url: "https://supabase.com/privacy" },

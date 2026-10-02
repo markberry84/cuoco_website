@@ -53,7 +53,7 @@ export default function Terms() {
             Terms of Service
           </h1>
           <p className="text-sm" style={{ color: "hsl(33 12% 45%)" }}>
-            Last updated: 22 July 2026
+            Last updated: 30 September 2026
           </p>
         </div>
 
@@ -141,13 +141,13 @@ export default function Terms() {
 
           <Section title="8. AI-Powered Features">
             <SubSection title="8.1 Nature of AI Output">
-              <p>Cuoco uses artificial intelligence to power features including recipe import, the voice assistant, and Cook Mode. AI-generated content may occasionally be inaccurate, incomplete, or unexpected. You should use your own judgement when relying on AI-generated recipe content, particularly in relation to ingredients, quantities, allergens, and cooking times. We are not liable for any loss or harm arising from reliance on AI-generated content.</p>
+              <p>Cuoco uses artificial intelligence to power features including recipe import, the voice assistant, Cook Mode and shopping list organisation. AI-generated content may occasionally be inaccurate, incomplete, or unexpected. You should use your own judgement when relying on AI-generated recipe content, particularly in relation to ingredients, quantities, allergens, and cooking times. We are not liable for any loss or harm arising from reliance on AI-generated content.</p>
             </SubSection>
             <SubSection title="8.2 Third-Party AI Services">
               <p>AI features are powered by third-party providers including OpenAI and ElevenLabs. The availability of these features depends on those providers' services remaining operational. We do not guarantee that AI features will be available at all times and are not liable for any interruption caused by a third-party provider.</p>
             </SubSection>
             <SubSection title="8.3 Consent to AI Processing">
-              <p>Recipe import and voice features are optional and turned off by default. Before either is used, the app explains what data is sent and to which third-party provider, and asks for your explicit permission. You can grant or withdraw this permission at any time in Settings. When enabled, your voice input is transcribed and processed by our AI providers; audio recordings are not retained after transcription. Further detail is set out in our{" "}
+              <p>Recipe import and voice features are optional and turned off by default. Before either is used, the app explains what data is sent and to which third-party provider, and asks for your explicit permission. You can grant or withdraw this permission at any time in Settings. When you press Ask Cuoco, your voice recording is transcribed and processed by our AI providers; audio recordings are not retained after transcription. If you turn on "Hey Cuoco", speech in Cook Mode is recognised on your device using Apple's speech recognition, and only the question you ask after "Hey Cuoco" is sent, as text, to our AI providers. Further detail is set out in our{" "}
                 <Link href="/privacy" style={{ color: "hsl(33 39% 40%)" }}>Privacy Policy</Link>.
               </p>
             </SubSection>
