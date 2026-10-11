@@ -1,39 +1,10 @@
-import { Link } from "wouter";
-import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
+import { PageShell } from "@/components/PageShell";
 
 export default function Privacy() {
   return (
-    <div style={{ background: "hsl(40 50% 96%)", minHeight: "100vh" }}>
-      {/* Nav */}
-      <header
-        className="sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b"
-        style={{
-          background: "hsl(40 50% 96%)",
-          borderColor: "hsl(36 18% 88%)",
-        }}
-      >
-        <Link href="/" className="flex items-center gap-2 cursor-pointer">
-          <img src={markPath} alt="Cuoco" width={28} height={28} className="w-7 h-7" />
-          <span
-            className="text-base tracking-[0.22em] font-medium"
-            style={{ fontFamily: "'Newsreader', Georgia, serif", color: "hsl(33 16% 11%)" }}
-          >
-            CUOCO
-          </span>
-        </Link>
-        <Link
-          href="/"
-          className="text-sm transition-colors duration-150"
-          style={{ color: "hsl(33 12% 45%)" }}
-          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(33 16% 11%)")}
-          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(33 12% 45%)")}
-        >
-          ← Back
-        </Link>
-      </header>
-
-      {/* Content */}
-      <main className="max-w-3xl mx-auto px-6 py-16 pb-24">
+    <PageShell>
+      <div className="bg-card-cream">
+      <div className="max-w-3xl mx-auto px-6 pt-32 pb-24">
         <p
           className="text-xs tracking-[0.3em] uppercase font-medium mb-4"
           style={{ color: "hsl(33 39% 40%)" }}
@@ -264,23 +235,9 @@ export default function Privacy() {
             This policy was written in plain English and is intended to be easy to understand. If anything is unclear, please get in touch.
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer
-        className="px-6 py-8 text-center text-xs border-t"
-        style={{
-          background: "hsl(40 50% 96%)",
-          borderColor: "hsl(36 18% 88%)",
-          color: "hsl(33 12% 45%)",
-        }}
-      >
-        &copy; 2026 Cuoco. All rights reserved. &nbsp;·&nbsp;{" "}
-        <Link href="/privacy" style={{ color: "hsl(33 39% 40%)" }}>Privacy Policy</Link>
-        &nbsp;·&nbsp;{" "}
-        <Link href="/terms" style={{ color: "hsl(33 39% 40%)" }}>Terms of Service</Link>
-      </footer>
-    </div>
+      </div>
+      </div>
+    </PageShell>
   );
 }
 

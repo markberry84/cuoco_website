@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "wouter";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { PageShell } from "@/components/PageShell";
+import { FadeIn } from "@/components/FadeIn";
+import { WaitlistForm } from "@/components/WaitlistForm";
 import {
   Mic,
   Sparkles,
@@ -8,8 +9,6 @@ import {
   CalendarDays,
   ChevronDown,
   Mail,
-  Menu,
-  X,
 } from "lucide-react";
 import { SiAppstore, SiGoogleplay, SiTiktok, SiInstagram } from "react-icons/si";
 import markPath from "@assets/cuoco-mark-1024-transparent_(1)_1777737495347.png";
@@ -33,40 +32,6 @@ const FEATURE_SCREENSHOTS = [
   screenshotRecipeImport,
   screenshotPlanner,
 ];
-
-function useScrolled(threshold = 20) {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > threshold);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [threshold]);
-  return scrolled;
-}
-
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 const FEATURES = [
   {
@@ -247,212 +212,9 @@ function AppStoreButton({
   );
 }
 
-function WaitlistForm() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setStatus("loading");
-    setErrorMsg("");
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
-      const res = await fetch(`${apiBase}/api/waitlist`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      const data = await res.json();
-      if (res.ok && data.ok) {
-        setStatus("success");
-      } else {
-        setErrorMsg(data.error ?? "Something went wrong. Please try again.");
-        setStatus("error");
-      }
-    } catch {
-      setErrorMsg("Couldn't connect. Please try again.");
-      setStatus("error");
-    }
-  }
-
-  if (status === "success") {
-    return (
-      <div
-        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium"
-        style={{
-          background: "hsla(33, 39%, 40%, 0.18)",
-          color: "hsl(38 33% 85%)",
-          border: "1px solid hsla(33, 39%, 40%, 0.35)",
-        }}
-      >
-        <span style={{ color: "hsl(35 55% 65%)" }}>✓</span>
-        You're on the list — we'll be in touch when we launch.
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
-        placeholder="your@email.com"
-        required
-        className="flex-1 px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-        style={{
-          background: "hsla(38, 33%, 100%, 0.07)",
-          border: status === "error" ? "1px solid hsl(0 55% 55%)" : "1px solid hsla(38, 33%, 91%, 0.2)",
-          color: "hsl(38 33% 91%)",
-        }}
-        onFocus={(e) => (e.currentTarget.style.borderColor = "hsl(33 39% 40%)")}
-        onBlur={(e) => (e.currentTarget.style.borderColor = status === "error" ? "hsl(0 55% 55%)" : "hsla(38, 33%, 91%, 0.2)")}
-      />
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200"
-        style={{
-          background: "hsl(33 39% 40%)",
-          color: "hsl(40 50% 96%)",
-          opacity: status === "loading" ? 0.7 : 1,
-          cursor: status === "loading" ? "default" : "pointer",
-        }}
-        onMouseEnter={(e) => { if (status !== "loading") e.currentTarget.style.background = "hsl(33 39% 33%)"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = "hsl(33 39% 40%)"; }}
-      >
-        {status === "loading" ? "Sending…" : "Notify me"}
-      </button>
-      {status === "error" && (
-        <p className="sm:col-span-2 text-xs text-center w-full" style={{ color: "hsl(0 55% 65%)" }}>
-          {errorMsg}
-        </p>
-      )}
-    </form>
-  );
-}
-
 export default function Landing() {
-  const scrolled = useScrolled();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navLinks = [
-    { href: "#features", label: "Features" },
-    { href: "#how-it-works", label: "How it works" },
-    { href: "#download", label: "Download" },
-    { href: "#faq", label: "FAQ" },
-    { href: "#contact", label: "Contact" },
-  ];
-
   return (
-    <div className="min-h-screen" style={{ background: "hsl(38 33% 91%)" }}>
-      {/* NAV */}
-      <header
-        data-testid="header-nav"
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          background: scrolled
-            ? "hsla(38, 33%, 91%, 0.95)"
-            : "hsla(38, 33%, 91%, 0.0)",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled
-            ? "1px solid hsl(36 18% 80%)"
-            : "1px solid transparent",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3" aria-label="Cuoco home">
-            <img
-              src={markPath}
-              alt="Cuoco mark"
-              width={32}
-              height={32}
-              className="w-8 h-8"
-            />
-            <span
-              className="text-xl tracking-[0.22em] font-medium"
-              style={{ fontFamily: "'Newsreader', Georgia, serif", color: "hsl(33 16% 11%)" }}
-            >
-              CUOCO
-            </span>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                data-testid={`nav-link-${l.label.toLowerCase().replace(/\s/g, "-")}`}
-                className="text-sm transition-colors duration-150"
-                style={{ color: "hsl(33 12% 45%)" }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = "hsl(33 39% 40%)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = "hsl(33 12% 45%)")
-                }
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-lg"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            data-testid="button-mobile-menu"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <X className="w-5 h-5" style={{ color: "hsl(33 16% 11%)" }} />
-            ) : (
-              <Menu className="w-5 h-5" style={{ color: "hsl(33 16% 11%)" }} />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden"
-              style={{
-                background: "hsl(38 33% 91%)",
-                borderTop: "1px solid hsl(36 18% 80%)",
-              }}
-            >
-              <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
-                {navLinks.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s/g, "-")}`}
-                    className="text-base py-1"
-                    style={{ color: "hsl(33 16% 11%)" }}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {l.label}
-                  </a>
-                ))}
-                <div className="flex gap-3 pt-2">
-                  <AppStoreButton store="apple" data-testid="mobile-cta-appstore" />
-                  <AppStoreButton store="google" data-testid="mobile-cta-google" />
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-
+    <PageShell>
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
         {/* Subtle radial glow */}
@@ -1012,76 +774,6 @@ export default function Landing() {
           </FadeIn>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer
-        style={{
-          background: "hsl(33 16% 11%)",
-          borderTop: "1px solid hsl(33 14% 20%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img
-              src={markDarkPath}
-              alt="Cuoco"
-              width={28}
-              height={28}
-              className="w-7 h-7 opacity-90"
-            />
-            <span
-              className="text-base tracking-[0.22em] font-medium"
-              style={{
-                fontFamily: "'Newsreader', Georgia, serif",
-                color: "hsl(36 18% 65%)",
-              }}
-            >
-              CUOCO
-            </span>
-          </div>
-
-          <p
-            className="text-xs"
-            style={{ color: "hsl(33 12% 45%)" }}
-          >
-            &copy; 2026 Cuoco. All rights reserved. &nbsp;·&nbsp;{" "}
-            <Link
-              href="/privacy"
-              className="transition-colors duration-150"
-              style={{ color: "hsl(33 12% 45%)" }}
-              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(35 32% 60%)")}
-              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(33 12% 45%)")}
-            >
-              Privacy Policy
-            </Link>
-            &nbsp;·&nbsp;{" "}
-            <Link
-              href="/terms"
-              className="transition-colors duration-150"
-              style={{ color: "hsl(33 12% 45%)" }}
-              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(35 32% 60%)")}
-              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "hsl(33 12% 45%)")}
-            >
-              Terms of Service
-            </Link>
-          </p>
-
-          <a
-            href="mailto:hello@get-cuoco.app"
-            data-testid="footer-contact-email"
-            className="text-xs transition-colors duration-150"
-            style={{ color: "hsl(33 12% 45%)" }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget.style.color = "hsl(35 32% 60%)")
-            )}
-            onMouseLeave={(e) =>
-              ((e.currentTarget.style.color = "hsl(33 12% 45%)")
-            )}
-          >
-            hello@get-cuoco.app
-          </a>
-        </div>
-      </footer>
-    </div>
+    </PageShell>
   );
 }

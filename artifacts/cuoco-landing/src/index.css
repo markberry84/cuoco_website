@@ -57,6 +57,16 @@
   --color-sidebar-accent-border: var(--sidebar-accent-border);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
+  --color-cream: hsl(38 33% 91%);
+  --color-card-cream: hsl(40 50% 96%);
+  --color-ink: hsl(33 16% 11%);
+  --color-ink-soft: hsl(33 16% 16%);
+  --color-brass: hsl(33 39% 40%);
+  --color-brass-light: hsl(35 32% 60%);
+  --color-body: hsl(33 12% 45%);
+  --color-line: hsl(36 18% 80%);
+  --color-line-soft: hsl(36 18% 84%);
+
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);

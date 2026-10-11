@@ -6,6 +6,9 @@ import NotFound from "@/pages/not-found";
 import Landing from "@/pages/Landing";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import Connect from "@/pages/Connect";
+import Voice from "@/pages/Voice";
+import Support from "@/pages/Support";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +18,9 @@ function Router() {
       <Route path="/" component={Landing} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
+      <Route path="/connect" component={Connect} />
+      <Route path="/voice" component={Voice} />
+      <Route path="/support" component={Support} />
       <Route component={NotFound} />
     </Switch>
   );
