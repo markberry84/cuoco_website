@@ -1,0 +1,1256 @@
+{
+  "title": "Privacy Policy",
+  "updated": "10 October 2026",
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "1. Who We Are"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Cuoco is operated by Mark Berry, a sole trader based in the United Kingdom."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you have any questions about this Privacy Policy or how we handle your data, please contact us at:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Email:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app"
+          }
+        ],
+        [
+          {
+            "text": "Website:",
+            "bold": true
+          },
+          {
+            "text": " www.get-cuoco.app"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "References to \"we\", \"us\", or \"our\" in this policy refer to Mark Berry trading as Cuoco."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "2. What This Policy Covers"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "This Privacy Policy explains what personal data we collect when you use the Cuoco app, why we collect it, how we use it, and what rights you have over it."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Cuoco is an AI-powered recipe management app that allows you to import, organise, and cook recipes using your voice. To provide these features, we work with a number of third-party services, each described below."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "3. Data We Collect and Why"
+    },
+    {
+      "type": "h3",
+      "text": "3.1 Account Information"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When you create an account, we collect:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Email address",
+            "bold": true
+          },
+          {
+            "text": " — used to identify your account, communicate with you about your subscription, and provide account recovery. If you sign in with Apple and choose to hide your email, Apple provides a private relay address instead of your real address. We store whichever address Apple or Google provides and use it solely for account management purposes."
+          }
+        ],
+        [
+          {
+            "text": "User ID",
+            "bold": true
+          },
+          {
+            "text": " — a unique identifier assigned by our authentication provider (Supabase) to link your data securely."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Contract — necessary to provide the service you have signed up for."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.2 Recipe Data"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Recipes you import, create, or edit are stored securely in our database. This includes recipe titles, ingredients, steps, nutritional information, notes, and any metadata (cuisine type, meal type, dietary flags). This data belongs to you and is used solely to power your Cuoco experience."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Contract — necessary to provide core app functionality."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.3 Usage and Billing Data"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "To manage your subscription tier and enforce fair usage limits, we collect:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Your current subscription tier (Trial, Cuoco Pro, Cuoco Premium, or Admin)"
+          }
+        ],
+        [
+          {
+            "text": "Monthly AI usage costs and counts (recipe imports, voice assistant calls, cook mode sessions)"
+          }
+        ],
+        [
+          {
+            "text": "Trial start and end dates"
+          }
+        ],
+        [
+          {
+            "text": "Subscription expiry dates"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "This data is used to determine what features you can access and to display your usage in the app's Settings screen. It is not shared with third parties except as necessary to process your subscription (see Section 5)."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Contract — necessary to enforce the subscription terms you have agreed to."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.4 Device Information"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When you use Cuoco, we collect limited device information to help us understand how the app is being used and to detect misuse:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Device model and operating system version"
+          }
+        ],
+        [
+          {
+            "text": "App version"
+          }
+        ],
+        [
+          {
+            "text": "A hashed device identifier (we do not store your raw device ID)"
+          }
+        ],
+        [
+          {
+            "text": "Approximate country and city (derived from IP address at the time of first use; IP address itself is stored as a hash and is not retained in readable form)"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Legitimate interests — to maintain the security and integrity of our service and prevent abuse of the free trial."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.5 Voice and AI Interactions"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Recipe import (from a photo, link, or pasted text) and the voice assistant are optional AI-powered features, turned off by default. Before you can use them, we explain what data is sent and to whom, and ask for your explicit permission — either during onboarding or the first time you try to use one of these features. You can turn this on or off at any time in Settings."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When these features are enabled and you use them, your input is processed by our AI providers (see Section 5). Specifically:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Voice recordings are sent to OpenAI to be transcribed, and are then discarded — we do not store audio files"
+          }
+        ],
+        [
+          {
+            "text": "When you give a voice command that needs confirming, the microphone reopens for a few seconds so you can answer \"yes\" or \"no\" out loud. It closes on its own, only ever follows a command you have just given, and you can answer using the on-screen buttons instead"
+          }
+        ],
+        [
+          {
+            "text": "Recipe text, URLs, and photos submitted for import are sent to OpenAI for processing and are not retained by us beyond what is returned as a recipe"
+          }
+        ],
+        [
+          {
+            "text": "Cook Mode and voice assistant queries are sent to OpenAI for processing; spoken responses are sent to ElevenLabs to generate speech. Within a single Cook Mode session, your recent questions and the assistant's answers are kept in memory and included with follow-up questions so it can understand them in context; this history is never stored, and is cleared when you end the session or close the app"
+          }
+        ],
+        [
+          {
+            "text": "Shopping list item names you add — whether typed manually or added by voice — along with your current shopping list, are sent to OpenAI to group similar items together and sort them into categories"
+          }
+        ],
+        [
+          {
+            "text": "Wake word (\"Hey Cuoco\").",
+            "bold": true
+          },
+          {
+            "text": " If you turn this on, Cuoco listens for the phrase \"Hey Cuoco\" while Cook Mode is open. To recognise that phrase, your iPhone converts nearby speech into text using Apple's built-in on-device speech recognition. "
+          },
+          {
+            "text": "This happens entirely on your iPhone.",
+            "bold": true
+          },
+          {
+            "text": " No audio is recorded, saved, or sent to us or to OpenAI, and the text produced is discarded moment by moment as you speak — it is not stored and it never leaves your device. Only when you actually say \"Hey Cuoco\" is the question that follows sent to OpenAI to be answered, exactly as when you press the microphone button. The feature is off unless you switch it on, works only while Cook Mode is open, and stops the moment you leave that screen or switch to another app. When you turn it on, iOS shows Apple's standard speech recognition notice, which appears for every app that uses speech recognition."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Consent — these features only operate once you have given explicit permission, which you may withdraw at any time via Settings."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.6 Error Logs"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When an AI feature fails (e.g. a recipe import error), we log structured error information including the endpoint, error code, and response time. This helps us diagnose and fix problems. Logs do not contain the content of your request."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Legitimate interests — to maintain and improve the reliability of our service."
+        }
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "3.7 Connected AI Assistants"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "You can choose to connect an AI assistant that supports connectors — such as Claude (by Anthropic) or ChatGPT (by OpenAI) — to your Cuoco account, so you can ask it about, and have it help manage, your recipes, collections, meal plan and shopping list. Nothing is shared until you set this up yourself: you sign in to Cuoco, we show you which assistant is asking for access and what it will be able to do, and it only gets access if you choose Allow."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Once connected, and when you ask it to, the assistant can:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Search and read your saved recipes, including ingredients, steps and notes"
+          }
+        ],
+        [
+          {
+            "text": "Edit a saved recipe — for example its title, notes, rating, ingredients or method. Edits made this way cannot be undone"
+          }
+        ],
+        [
+          {
+            "text": "See your collections and favourites, create or rename a collection, add or remove recipes from a collection, and mark a recipe as a favourite"
+          }
+        ],
+        [
+          {
+            "text": "See which recipes you have cooked recently and most often"
+          }
+        ],
+        [
+          {
+            "text": "See your meal plan, and add or remove entries one day at a time"
+          }
+        ],
+        [
+          {
+            "text": "See your shopping list, add items to it, tick items off, edit or remove an item, and clear the items you have ticked"
+          }
+        ],
+        [
+          {
+            "text": "Save a new recipe to your library from a web link or from text in your conversation, and sort items you add to your shopping list into categories — these use Cuoco's AI features as described in Section 3.5, and only work if you have turned them on"
+          }
+        ],
+        [
+          {
+            "text": "Read your basic Cuoco settings, such as your preferred units and plan type"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "It cannot delete recipes or collections, clear your whole calendar or shopping list in one go, or change your account or subscription."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Information the assistant reads from Cuoco is then handled by that assistant's provider under their own privacy policy, not ours — we recommend reading it. You can disconnect an assistant at any time in Settings → Connected Apps, which ends its access immediately."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "segs": [
+        {
+          "text": "Consent — data is shared with an assistant only after you explicitly allow it, and you may withdraw that consent at any time by disconnecting it."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "4. Data We Do Not Collect"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We do not collect:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Payment card details (handled entirely by Apple; we never see your payment information)"
+          }
+        ],
+        [
+          {
+            "text": "Precise location data"
+          }
+        ],
+        [
+          {
+            "text": "Contacts, photos, or camera access beyond images you explicitly submit for recipe import"
+          }
+        ],
+        [
+          {
+            "text": "Browsing history or data from other apps"
+          }
+        ],
+        [
+          {
+            "text": "Any data from users under 13 years of age (the app is not directed at children)"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "5. Third-Party Services"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "To provide Cuoco, we share data with the following third-party services. Each is contractually obligated to handle your data securely and in accordance with applicable law."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Supabase"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Database and authentication provider"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Email address, user ID, recipes, preferences, usage data, device data"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United Kingdom (London, eu-west-2)"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://supabase.com/privacy",
+            "href": "https://supabase.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "OpenAI"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " AI processing for recipe import, voice transcription, cook mode, and the voice assistant (only when AI Features are enabled — see Section 3.5)"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Recipe text, URLs, photos submitted for import; voice transcriptions; voice assistant queries; shopping list item names and your current list (for categorisation)"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States (OpenAI is subject to Standard Contractual Clauses for EU/UK data transfers)"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://openai.com/privacy",
+            "href": "https://openai.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "ElevenLabs"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Text-to-speech voice synthesis for the voice assistant and Cook Mode (only when AI Features are enabled — see Section 3.5)"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Text strings sent for audio synthesis (recipe steps, assistant responses)"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://elevenlabs.io/privacy",
+            "href": "https://elevenlabs.io/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "RevenueCat"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Subscription management and in-app purchase tracking"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " User ID, email address, subscription status, purchase events"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://www.revenuecat.com/privacy",
+            "href": "https://www.revenuecat.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Apple"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Payment processing (App Store), Sign In with Apple authentication"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Apple manages payments directly — we receive only subscription status events via RevenueCat. For Sign In with Apple, Apple provides us with your email address or a private relay address at your choice."
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://www.apple.com/legal/privacy",
+            "href": "https://www.apple.com/legal/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Google"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Sign In with Google authentication"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Google provides us with your email address at sign-in. We store this solely for account identification and management."
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://policies.google.com/privacy",
+            "href": "https://policies.google.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "6. Subscriptions and Payments"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "All payments are processed by Apple through the App Store. We do not receive, store, or process your payment card details at any point."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When you purchase a subscription, Apple notifies us via RevenueCat of the subscription status (active, cancelled, expired, etc.). We use this information to unlock the appropriate features in Cuoco."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you cancel your subscription, your access continues until the end of the paid period. After that point, your account reverts to an expired trial state and you will be asked to resubscribe to continue using AI features."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "7. Data Retention"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We retain your data for the following periods:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "head": [
+        [
+          {
+            "text": "Data type"
+          }
+        ],
+        [
+          {
+            "text": "Retention period"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "Account data (email, preferences)"
+            }
+          ],
+          [
+            {
+              "text": "For the lifetime of your account"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Recipe data"
+            }
+          ],
+          [
+            {
+              "text": "For the lifetime of your account"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Usage and billing records"
+            }
+          ],
+          [
+            {
+              "text": "7 years (UK legal and tax requirements)"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Device information"
+            }
+          ],
+          [
+            {
+              "text": "12 months from last activity"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Error logs"
+            }
+          ],
+          [
+            {
+              "text": "90 days"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Voice recordings"
+            }
+          ],
+          [
+            {
+              "text": "Not retained — discarded after transcription"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "When you request account deletion (see Section 9), we will delete your account data and recipes within 30 days. Usage and billing records are retained for 7 years as required by law."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "8. Data Transfers Outside the UK"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Some of our third-party service providers are based in the United States. Where we transfer your personal data outside the UK, we ensure appropriate safeguards are in place, including:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Standard Contractual Clauses (SCCs) approved by the UK Information Commissioner's Office"
+          }
+        ],
+        [
+          {
+            "text": "UK adequacy decisions where applicable"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you would like more information about the specific safeguards in place for any transfer, please contact us at "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app"
+          },
+          {
+            "text": "."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "9. Your Rights"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Under UK GDPR, you have the following rights regarding your personal data:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Right of access",
+            "bold": true
+          },
+          {
+            "text": " — you can request a copy of the data we hold about you"
+          }
+        ],
+        [
+          {
+            "text": "Right to rectification",
+            "bold": true
+          },
+          {
+            "text": " — you can ask us to correct inaccurate data"
+          }
+        ],
+        [
+          {
+            "text": "Right to erasure",
+            "bold": true
+          },
+          {
+            "text": " — you can ask us to delete your data (subject to legal retention requirements)"
+          }
+        ],
+        [
+          {
+            "text": "Right to restriction",
+            "bold": true
+          },
+          {
+            "text": " — you can ask us to limit how we use your data"
+          }
+        ],
+        [
+          {
+            "text": "Right to data portability",
+            "bold": true
+          },
+          {
+            "text": " — you can ask for your data in a machine-readable format"
+          }
+        ],
+        [
+          {
+            "text": "Right to object",
+            "bold": true
+          },
+          {
+            "text": " — you can object to processing based on legitimate interests"
+          }
+        ],
+        [
+          {
+            "text": "Rights related to automated decision-making",
+            "bold": true
+          },
+          {
+            "text": " — Cuoco does not make solely automated decisions that have legal or significant effects on you"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "To exercise any of these rights, please contact us at "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app",
+            "bold": true
+          },
+          {
+            "text": ". We will respond within 30 days."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "You also have the right to lodge a complaint with the UK Information Commissioner's Office (ICO) at "
+          },
+          {
+            "text": "ico.org.uk",
+            "bold": true
+          },
+          {
+            "text": " if you believe we have not handled your data correctly."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Account Deletion"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "To request deletion of your account and associated data, please email "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app",
+            "bold": true
+          },
+          {
+            "text": " with the subject line \"Account Deletion Request\" and the email address associated with your account. We will process your request within 30 days."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "10. Notifications"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We may in future send you notifications relating to your account, such as reminders that your free trial is nearing its end. You can control notification permissions at any time via your device's Settings app. We will always ask for your permission before sending notifications."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We do not currently send marketing emails. If we introduce email marketing in future, we will obtain your explicit consent before doing so."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "11. Children's Privacy"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Cuoco is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. If you believe a child under 13 has provided us with personal data, please contact us at "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app"
+          },
+          {
+            "text": " and we will delete it promptly."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "12. Changes to This Policy"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We may update this Privacy Policy from time to time. When we do, we will update the \"Last updated\" date at the top of this page. If the changes are significant, we will notify you through the app or by email. Your continued use of Cuoco after changes are posted constitutes your acceptance of the updated policy."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "13. Contact Us"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you have any questions, concerns, or requests relating to this Privacy Policy or your personal data, please contact us:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Email:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "hello@get-cuoco.app",
+            "href": "mailto:hello@get-cuoco.app"
+          }
+        ],
+        [
+          {
+            "text": "Website:",
+            "bold": true
+          },
+          {
+            "text": " www.get-cuoco.app"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "We aim to respond to all enquiries within 5 business days."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "note",
+      "segs": [
+        {
+          "text": "This policy was written in plain English and is intended to be easy to understand. If anything is unclear, please get in touch."
+        }
+      ]
+    }
+  ]
+}
