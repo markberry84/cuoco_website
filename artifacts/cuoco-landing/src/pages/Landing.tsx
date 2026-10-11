@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
+import { Hero } from "@/components/home/Hero";
+import { LeadPanels } from "@/components/home/LeadPanels";
 import { FadeIn } from "@/components/FadeIn";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import {
@@ -215,140 +217,8 @@ function AppStoreButton({
 export default function Landing() {
   return (
     <PageShell>
-      {/* HERO */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
-        {/* Subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 55% at 50% 40%, hsla(33, 39%, 40%, 0.10) 0%, transparent 70%)",
-          }}
-        />
-
-        <div className="relative max-w-4xl mx-auto text-center">
-          {/* Logo mark */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="flex justify-center mb-8"
-          >
-            <img
-              src={markPath}
-              alt="Cuoco"
-              width={80}
-              height={80}
-              className="w-20 h-20"
-            />
-          </motion.div>
-
-          {/* Wordmark */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl tracking-[0.22em] font-medium mb-6"
-            style={{ fontFamily: "'Newsreader', Georgia, serif", color: "hsl(33 39% 40%)" }}
-          >
-            CUOCO
-          </motion.p>
-
-          {/* Headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl leading-[1.1] mb-6"
-            style={{
-              fontFamily: "'Newsreader', Georgia, serif",
-              fontWeight: 400,
-              color: "hsl(33 16% 11%)",
-            }}
-          >
-            Less scrolling.
-            <br />
-            <span style={{ color: "hsl(33 39% 40%)", fontStyle: "italic" }}>
-              More cooking.
-            </span>
-          </motion.p>
-
-          {/* Subheadline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.35 }}
-            className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
-            style={{ color: "hsl(33 12% 45%)" }}
-          >
-            Your AI-powered cooking companion with a built-in voice assistant.
-            Discover, plan, and cook — hands-free.
-          </motion.h1>
-
-          {/* CTA buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center mb-16"
-          >
-            <AppStoreButton store="apple" data-testid="hero-cta-appstore" />
-            <AppStoreButton store="google" data-testid="hero-cta-google" />
-          </motion.div>
-
-          {/* Phone mockup */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto"
-            style={{ maxWidth: 320 }}
-          >
-            {/* Outer glow */}
-            <div
-              className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-30"
-              style={{ background: "hsl(33 39% 40%)" }}
-            />
-            {/* Phone shell */}
-            <div
-              className="relative mx-auto w-64 md:w-72 rounded-[2.5rem] p-2 shadow-2xl"
-              style={{ background: "hsl(33 16% 16%)" }}
-            >
-              {/* Speaker notch */}
-              <div
-                className="absolute top-5 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full"
-                style={{ background: "hsl(33 14% 25%)" }}
-              />
-              {/* Screen */}
-              <div className="rounded-[2rem] overflow-hidden">
-                <img
-                  src={screenshotRecipeList}
-                  alt="Cuoco recipe list"
-                  className="w-full h-auto"
-                  style={{ display: "block" }}
-                />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Scroll hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="flex flex-col items-center gap-2 mt-10"
-          style={{ color: "hsl(33 16% 20%)" }}
-        >
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-4 h-4" />
-          </motion.div>
-        </motion.div>
-      </section>
+      <Hero />
+      <LeadPanels />
 
       {/* FEATURES */}
       <section
