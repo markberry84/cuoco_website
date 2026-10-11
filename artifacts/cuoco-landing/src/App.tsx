@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useEffect } from "react";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +11,7 @@ import Connect from "@/pages/Connect";
 import Voice from "@/pages/Voice";
 import Support from "@/pages/Support";
 import PreviewBlocks from "@/pages/PreviewBlocks";
+import { titleFor } from "@/content/seo";
 
 const queryClient = new QueryClient();
 
@@ -28,11 +30,21 @@ function Router() {
   );
 }
 
-function App() {
+// Keeps the browser tab's title right when moving between pages without a reload.
+function TitleSync() {
+  const [location] = useLocation();
+  useEffect(() => {
+    document.title = titleFor(location);
+  }, [location]);
+  return null;
+}
+
+function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")} ssrPath={ssrPath}>
+          <TitleSync />
           <Router />
         </WouterRouter>
         <Toaster />

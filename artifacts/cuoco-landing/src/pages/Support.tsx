@@ -40,7 +40,8 @@ export default function Support() {
                 <AccordionTrigger className="px-6 py-4 text-left font-serif text-base font-medium text-ink hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed text-body">
+                {/* forceMount keeps the answer in the page for search engines while closed */}
+                <AccordionContent forceMount className="px-6 pb-5 text-sm leading-relaxed text-body">
                   <p>{item.a}</p>
                   {item.link && (
                     <p className="mt-3">
