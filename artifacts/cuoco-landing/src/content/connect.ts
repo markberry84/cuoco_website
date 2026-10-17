@@ -56,7 +56,7 @@ export const CHATGPT_STEPS = [
 ];
 
 export const CHATGPT_PLANS = {
-  text: "Available on ChatGPT plans that support custom connectors.",
+  text: "Tested on ChatGPT Plus. Other ChatGPT plans may handle custom connectors differently.",
 };
 
 export const EXAMPLES = [
