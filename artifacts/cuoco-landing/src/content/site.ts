@@ -4,7 +4,7 @@ export const SITE = {
   appStoreId: "6766098644",
   appStoreBase: "https://apps.apple.com/app/apple-store/id6766098644",
   // App Store Connect provider number; empty until campaign links are set up
-  campaignProvider: "",
+  campaignProvider: "128796440",
   connectorUrl: "https://mcp.get-cuoco.app/mcp",
   instagram: "https://www.instagram.com/getcuoco.app/",
   tiktok: "https://www.tiktok.com/@getcuoco",
