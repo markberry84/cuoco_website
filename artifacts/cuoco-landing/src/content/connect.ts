@@ -18,7 +18,7 @@ export const CAPABILITIES = [
 ];
 
 export const LIMITS = [
-  "It asks before each change.",
+  "It asks before making changes, unless you've told it to always allow them.",
   "It can't delete recipes or collections.",
   "It can't clear your whole meal plan or shopping list in one go.",
   "It can't touch your account or subscription.",

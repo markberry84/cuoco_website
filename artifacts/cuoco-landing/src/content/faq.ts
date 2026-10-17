@@ -20,7 +20,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: "Can I use Cuoco with Claude or ChatGPT?",
-    a: "Yes. Connect Cuoco to Claude or ChatGPT and you can ask it to search your recipes, plan meals, manage your shopping list and save new recipes. It asks before each change, and you can disconnect at any time in Settings.",
+    a: "Yes. Connect Cuoco to Claude or ChatGPT and you can ask it to search your recipes, plan meals, manage your shopping list and save new recipes. It asks before making changes, unless you've told it to always allow them, and you can disconnect at any time in Settings.",
     link: { label: "How to connect", href: "/connect" },
   },
   {
