@@ -21,12 +21,11 @@ const PHONE = "720 / 1561";
 
 export const MEDIA: Record<MediaSlot, MediaEntry> = {
   "hero-chat": {
-    hasVideo: false,
-    hasStill: false,
+    hasVideo: true,
+    hasStill: true,
     hasSound: false,
-    aspect: "16 / 11",
-    alt: "A chat with Claude adding a recipe to the Cuoco meal plan and shopping list",
-    placeholder: "Claude chat recording",
+    aspect: "1000 / 904",
+    alt: "A chat with ChatGPT adding chicken tikka masala to Friday's Cuoco meal plan and its ingredients to the shopping list",
   },
   "hero-cook": {
     hasVideo: false,
