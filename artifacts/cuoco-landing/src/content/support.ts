@@ -40,6 +40,6 @@ export const SUPPORT: SupportItem[] = [
   },
   {
     q: "How do I delete my account?",
-    a: "In the app, go to Settings and choose Delete Account. This permanently removes your account and your recipes.",
+    a: "In the app, go to Settings and choose Delete Account. This permanently deletes your account along with your recipes, collections, meal plan and shopping list. Usage and billing records are kept for 7 years, as UK law requires. Deleting your account doesn't cancel a subscription, so cancel it in the App Store first.",
   },
 ];
