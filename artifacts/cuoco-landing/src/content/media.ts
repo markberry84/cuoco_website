@@ -24,7 +24,7 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     hasVideo: true,
     hasStill: true,
     hasSound: false,
-    aspect: "1000 / 904",
+    aspect: "1000 / 652",
     alt: "A chat with ChatGPT adding chicken tikka masala to Friday's Cuoco meal plan and its ingredients to the shopping list",
   },
   "hero-cook": {
