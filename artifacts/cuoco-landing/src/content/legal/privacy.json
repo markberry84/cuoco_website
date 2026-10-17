@@ -130,6 +130,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Contract — necessary to provide the service you have signed up for."
@@ -152,6 +153,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Contract — necessary to provide core app functionality."
@@ -209,6 +211,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Contract — necessary to enforce the subscription terms you have agreed to."
@@ -256,6 +259,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Legitimate interests — to maintain the security and integrity of our service and prevent abuse of the free trial."
@@ -334,6 +338,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Consent — these features only operate once you have given explicit permission, which you may withdraw at any time via Settings."
@@ -356,6 +361,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Legitimate interests — to maintain and improve the reliability of our service."
@@ -453,6 +459,7 @@
     },
     {
       "type": "legal",
+      "label": "Legal basis (GDPR)",
       "segs": [
         {
           "text": "Consent — data is shared with an assistant only after you explicitly allow it, and you may withdraw that consent at any time by disconnecting it."
@@ -985,17 +992,12 @@
       ]
     },
     {
-      "type": "p",
-      "lines": [
-        [
-          {
-            "text": "Legal basis (GDPR) for the trial record:",
-            "bold": true
-          },
-          {
-            "text": " Legitimate interests — to prevent the free trial being claimed repeatedly."
-          }
-        ]
+      "type": "legal",
+      "label": "Legal basis (GDPR) for the trial record",
+      "segs": [
+        {
+          "text": "Legitimate interests — to prevent the free trial being claimed repeatedly."
+        }
       ]
     },
     {

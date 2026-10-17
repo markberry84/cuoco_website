@@ -10,7 +10,8 @@ type Block =
   | { type: "p"; lines: Seg[][] }
   | { type: "ul"; items: Seg[][] }
   | { type: "table"; head: Seg[][]; rows: Seg[][][] }
-  | { type: "legal" | "note"; segs: Seg[] };
+  | { type: "legal"; label: string; segs: Seg[] }
+  | { type: "note"; segs: Seg[] };
 
 export type LegalDoc = { title: string; updated: string; blocks: Block[] };
 
@@ -100,7 +101,7 @@ function BlockView({ block }: { block: Block }) {
     case "legal":
       return (
         <p className="mt-4 rounded-lg bg-brass/10 px-3 py-2 text-xs text-[hsl(33_16%_35%)]">
-          <strong>Legal basis (GDPR):</strong> <Segs segs={block.segs} />
+          <strong>{block.label}:</strong> <Segs segs={block.segs} />
         </p>
       );
     case "note":

@@ -98,9 +98,10 @@ def convert(md):
                 para.append(cur)
                 i += 1
             first = para[0]
-            if first.startswith("**Legal basis (GDPR):**"):
-                rest = " ".join(para)[len("**Legal basis (GDPR):**"):].strip()
-                blocks.append({"type": "legal", "segs": inline(rest)})
+            legal = re.match(r"\*\*(Legal basis \(GDPR\)[^*:]*):\*\*", first)
+            if legal:
+                rest = " ".join(para)[legal.end():].strip()
+                blocks.append({"type": "legal", "label": legal.group(1), "segs": inline(rest)})
             elif len(para) == 1 and re.fullmatch(r"\*[^*].*[^*]\*", first):
                 blocks.append({"type": "note", "segs": inline(first[1:-1])})
             else:
@@ -123,7 +124,7 @@ def plain(doc):
             for row in [b["head"]] + b["rows"]:
                 out.extend(seg_text(c) for c in row)
         elif b["type"] == "legal":
-            out.append("Legal basis (GDPR): " + seg_text(b["segs"]))
+            out.append(b["label"] + ": " + seg_text(b["segs"]))
         elif b["type"] == "note":
             out.append(seg_text(b["segs"]))
     return re.sub(r"\s+", " ", " ".join(out)).strip()
