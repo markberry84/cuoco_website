@@ -1,6 +1,6 @@
 {
   "title": "Privacy Policy",
-  "updated": "10 October 2026",
+  "updated": "17 October 2026",
   "blocks": [
     {
       "type": "h2",
@@ -936,6 +936,18 @@
               "text": "Not retained — discarded after transcription"
             }
           ]
+        ],
+        [
+          [
+            {
+              "text": "Trial record (email address, trial dates and date of account deletion)"
+            }
+          ],
+          [
+            {
+              "text": "Kept after account deletion, for as long as Cuoco offers a free trial"
+            }
+          ]
         ]
       ]
     },
@@ -944,7 +956,44 @@
       "lines": [
         [
           {
-            "text": "When you request account deletion (see Section 9), we will delete your account data and recipes within 30 days. Usage and billing records are retained for 7 years as required by law."
+            "text": "When you delete your account (see Section 9), we delete your account data, recipes, collections, meal plan and shopping list. We keep two things:"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        [
+          {
+            "text": "Usage and billing records",
+            "bold": true
+          },
+          {
+            "text": ", for 7 years, as required by UK law."
+          }
+        ],
+        [
+          {
+            "text": "A trial record",
+            "bold": true
+          },
+          {
+            "text": ": your email address, the start and end dates of your free trial, and the date you deleted your account. This lets us make sure the free trial is used only once per email address. If you sign up again with the same email address, you will not get a new trial; any time left on your original trial is restored instead."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Legal basis (GDPR) for the trial record:",
+            "bold": true
+          },
+          {
+            "text": " Legitimate interests — to prevent the free trial being claimed repeatedly."
           }
         ]
       ]
@@ -1121,7 +1170,31 @@
       "lines": [
         [
           {
-            "text": "To request deletion of your account and associated data, please email "
+            "text": "You can delete your account at any time in the app: go to "
+          },
+          {
+            "text": "Settings",
+            "bold": true
+          },
+          {
+            "text": " and choose "
+          },
+          {
+            "text": "Delete Account",
+            "bold": true
+          },
+          {
+            "text": ". This takes effect immediately and cannot be undone. Deleting your account does not cancel a subscription, so please cancel it in the App Store first."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you cannot use the app, you can instead email "
           },
           {
             "text": "hello@get-cuoco.app",
@@ -1129,7 +1202,17 @@
             "bold": true
           },
           {
-            "text": " with the subject line \"Account Deletion Request\" and the email address associated with your account. We will process your request within 30 days."
+            "text": " with the subject line \"Account Deletion Request\" and the email address associated with your account. We will process emailed requests within 30 days."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Section 7 explains the records we keep after deletion."
           }
         ]
       ]
