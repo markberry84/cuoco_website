@@ -6,6 +6,7 @@ import { Clip } from "@/components/Clip";
 import { AppStoreButton } from "@/components/AppStoreButton";
 import { QrCode } from "@/components/QrCode";
 import { usePageVisible } from "@/hooks/usePageVisible";
+import { CAPTIONS, type Caption } from "@/content/media";
 import { cn } from "@/lib/utils";
 
 type Side = "chat" | "cook";
@@ -15,11 +16,46 @@ const HANDOVER_SAFETY_MS = 20_000;
 // Until a slot has a recording, its still counts as a clip of this length.
 const STILL_SECONDS = 6;
 
+/** Speech bubbles over the bottom of the phone, so the silent hero clip still reads. */
+function SpeechBubbles({ captions, time, showAll }: { captions: Caption[]; time: number; showAll: boolean }) {
+  return (
+    <div
+      className="pointer-events-none absolute -inset-x-6 bottom-10 flex flex-col gap-2"
+      aria-hidden="true"
+    >
+      {captions.map((c) => {
+        const on = showAll || time >= c.at;
+        return (
+          <p
+            key={c.text}
+            className={cn(
+              "max-w-[85%] rounded-2xl px-3.5 py-2 text-left text-xs leading-snug shadow-lg transition-all duration-500",
+              c.kind === "question"
+                ? "self-end rounded-br-sm bg-ink text-cream"
+                : "self-start rounded-bl-sm border border-line bg-card-cream font-serif text-[13px] italic text-ink",
+              on ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
+            )}
+          >
+            {c.short ?? c.text}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Hero() {
   const [side, setSide] = useState<Side>("chat");
   // True when clips cannot play by themselves (reduced motion, autoplay refused, load error).
   const [stopped, setStopped] = useState(false);
   const pageVisible = usePageVisible();
+  const [cookTime, setCookTime] = useState(0);
+  const cookCaptions = CAPTIONS["hero-cook"] ?? [];
+
+  // Bubbles start hidden each time the kitchen clip takes its turn.
+  useEffect(() => {
+    if (side === "cook") setCookTime(0);
+  }, [side]);
 
   useEffect(() => {
     if (stopped || !pageVisible) return;
@@ -108,16 +144,22 @@ export function Hero() {
             </div>
 
             <div className={frameClass("cook")} data-side="cook" data-on={isOn("cook")}>
-              <PhoneFrame className="w-[11.5rem] md:w-60">
-                <Clip
-                  slot="hero-cook"
-                  active={!stopped && side === "cook"}
-                  loop={false}
-                  stillSeconds={STILL_SECONDS}
-                  onEnded={() => setSide("chat")}
-                  onUnavailable={() => setStopped(true)}
-                />
-              </PhoneFrame>
+              <div className="relative">
+                <PhoneFrame className="w-[11.5rem] md:w-60">
+                  <Clip
+                    slot="hero-cook"
+                    active={!stopped && side === "cook"}
+                    loop={false}
+                    stillSeconds={STILL_SECONDS}
+                    onEnded={() => setSide("chat")}
+                    onUnavailable={() => setStopped(true)}
+                    onTime={setCookTime}
+                  />
+                </PhoneFrame>
+                {(stopped || side === "cook") && (
+                  <SpeechBubbles captions={cookCaptions} time={cookTime} showAll={stopped} />
+                )}
+              </div>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-brass">
                 In your kitchen
               </p>

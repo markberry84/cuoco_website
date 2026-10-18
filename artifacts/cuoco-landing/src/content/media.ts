@@ -71,6 +71,28 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
   },
 };
 
+export type Caption = {
+  /** Seconds into the clip when the line appears. */
+  at: number;
+  text: string;
+  /** Shorter wording for small spaces such as the home page hero. */
+  short?: string;
+  kind: "question" | "answer";
+};
+
+/** What is said in clips that have speech, timed to the edited clip. */
+export const CAPTIONS: Partial<Record<MediaSlot, Caption[]>> = {
+  "hero-cook": [
+    { at: 1.5, kind: "question", text: "Hey Cuoco, what are the first seven ingredients here?" },
+    {
+      at: 5.2,
+      kind: "answer",
+      text: "The first seven ingredients are 0.5 onion, 60 g tomato purée, 1 tsp cumin seeds, 2.5 cm ginger root, 3 tbsp lemon juice, 2 cloves garlic, and 2 tsp chilli powder.",
+      short: "Onion, tomato purée, cumin seeds, ginger, lemon juice, garlic and chilli powder.",
+    },
+  ],
+};
+
 export function mediaUrl(slot: MediaSlot, ext: "jpg" | "mp4" | "webm"): string {
   return `${import.meta.env.BASE_URL}media/${slot}.${ext}`;
 }

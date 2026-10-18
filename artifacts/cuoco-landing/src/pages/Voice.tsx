@@ -7,18 +7,9 @@ import { PhoneFrame } from "@/components/PhoneFrame";
 import { Clip, type Caption } from "@/components/Clip";
 import { AppStoreButton } from "@/components/AppStoreButton";
 import { FadeIn } from "@/components/FadeIn";
-import { MEDIA, type MediaSlot } from "@/content/media";
+import { CAPTIONS, MEDIA, type MediaSlot } from "@/content/media";
 import { cn } from "@/lib/utils";
 
-// Timings match media/hero-cook (seconds into the clip).
-const COOK_CAPTIONS: Caption[] = [
-  { at: 1.5, kind: "question", text: "Hey Cuoco, what are the first seven ingredients here?" },
-  {
-    at: 5.2,
-    kind: "answer",
-    text: "The first seven ingredients are 0.5 onion, 60 g tomato purée, 1 tsp cumin seeds, 2.5 cm ginger root, 3 tbsp lemon juice, 2 cloves garlic, and 2 tsp chilli powder.",
-  },
-];
 
 const ASK_QUOTES = [
   "Find me dinner recipes I can cook in under 30 minutes.",
@@ -105,7 +96,7 @@ export default function Voice() {
             </p>
             <AppStoreButton placement="voice" />
           </div>
-          <CaptionedClip slot="hero-cook" captions={COOK_CAPTIONS} />
+          <CaptionedClip slot="hero-cook" captions={CAPTIONS["hero-cook"] ?? []} />
         </div>
       </section>
 

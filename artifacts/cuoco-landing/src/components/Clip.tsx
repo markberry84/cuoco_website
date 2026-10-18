@@ -6,7 +6,7 @@ import { usePageVisible } from "@/hooks/usePageVisible";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { cn } from "@/lib/utils";
 
-export type Caption = { at: number; text: string; kind: "question" | "answer" };
+export type { Caption } from "@/content/media";
 
 type ClipProps = {
   slot: MediaSlot;
