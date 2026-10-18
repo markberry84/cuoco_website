@@ -39,7 +39,7 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "A TikTok recipe shared into Cuoco and imported as a recipe card",
+    alt: "A BBC Food recipe shared from Chrome into Cuoco and imported as a recipe card",
   },
   plan: {
     hasVideo: true,
