@@ -17,7 +17,7 @@ type MediaEntry = {
   placeholder?: string;
 };
 
-const PHONE = "720 / 1561";
+const PHONE = "720 / 1560";
 
 export const MEDIA: Record<MediaSlot, MediaEntry> = {
   "hero-chat": {
@@ -28,25 +28,25 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     alt: "A chat with ChatGPT adding chicken tikka masala to Friday's Cuoco meal plan and its ingredients to the shopping list",
   },
   "hero-cook": {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
     hasSound: true,
     aspect: PHONE,
-    alt: "Cuoco in Cook Mode answering a spoken question about the current step",
+    alt: "Cuoco in Cook Mode answering \"Hey Cuoco, what are the first seven ingredients here?\"",
   },
   save: {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "A recipe being imported into Cuoco",
+    alt: "A TikTok recipe shared into Cuoco and imported as a recipe card",
   },
   plan: {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "Adding a recipe to the Cuoco meal planner",
+    alt: "Adding recipes and a note to days in the Cuoco meal planner",
   },
   shop: {
     hasVideo: false,

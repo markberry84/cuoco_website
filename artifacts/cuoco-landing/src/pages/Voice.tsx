@@ -10,10 +10,14 @@ import { FadeIn } from "@/components/FadeIn";
 import { MEDIA, type MediaSlot } from "@/content/media";
 import { cn } from "@/lib/utils";
 
-// Placeholder wording and timings until the real recordings arrive.
+// Timings match media/hero-cook (seconds into the clip).
 const COOK_CAPTIONS: Caption[] = [
-  { at: 0, kind: "question", text: "Hey Cuoco, how long does this need in the oven?" },
-  { at: 3, kind: "answer", text: "Cuoco answers out loud" },
+  { at: 1.5, kind: "question", text: "Hey Cuoco, what are the first seven ingredients here?" },
+  {
+    at: 5.2,
+    kind: "answer",
+    text: "The first seven ingredients are 0.5 onion, 60 g tomato purée, 1 tsp cumin seeds, 2.5 cm ginger root, 3 tbsp lemon juice, 2 cloves garlic, and 2 tsp chilli powder.",
+  },
 ];
 
 const ASK_QUOTES = [
