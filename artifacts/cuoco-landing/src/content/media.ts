@@ -60,7 +60,7 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "Stepping through a recipe in Cook Mode and asking Hey Cuoco to set a one-hour timer",
+    alt: "Stepping through a recipe in Cook Mode, asking Cuoco how much soy sauce to use, then rating the dish",
   },
   "voice-ask": {
     hasVideo: true,
