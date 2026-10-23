@@ -103,9 +103,7 @@ export default function Voice() {
       <section className="bg-card-cream px-6 py-20">
         <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
           <FadeIn className="order-2 md:order-1">
-            <PhoneFrame className="mx-auto w-56 md:w-60">
-              <Clip slot="voice-ask" sound />
-            </PhoneFrame>
+            <CaptionedClip slot="voice-ask" captions={CAPTIONS["voice-ask"] ?? []} />
           </FadeIn>
           <FadeIn className="order-1 md:order-2">
             <h2 className="mb-4 text-3xl font-normal text-ink md:text-4xl">

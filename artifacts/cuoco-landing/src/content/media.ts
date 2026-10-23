@@ -56,18 +56,18 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     alt: "The Cuoco shopping list sorted into categories",
   },
   cook: {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "Stepping through a recipe in Cuoco's Cook Mode",
+    alt: "Stepping through a recipe in Cook Mode and asking Hey Cuoco to set a one-hour timer",
   },
   "voice-ask": {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
-    hasSound: true,
+    hasSound: false,
     aspect: PHONE,
-    alt: "Asking Cuoco to find a recipe by voice",
+    alt: "Asking Cuoco by voice for quick dinner recipes and the list filtering to match",
   },
 };
 
@@ -90,6 +90,9 @@ export const CAPTIONS: Partial<Record<MediaSlot, Caption[]>> = {
       text: "The first seven ingredients are 0.5 onion, 60 g tomato purée, 1 tsp cumin seeds, 2.5 cm ginger root, 3 tbsp lemon juice, 2 cloves garlic, and 2 tsp chilli powder.",
       short: "Onion, tomato purée, cumin seeds, ginger, lemon juice, garlic and chilli powder.",
     },
+  ],
+  "voice-ask": [
+    { at: 0.75, kind: "question", text: "Find me dinner recipes I can cook in under 30 minutes." },
   ],
 };
 
