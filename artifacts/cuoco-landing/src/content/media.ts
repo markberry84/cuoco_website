@@ -49,11 +49,11 @@ export const MEDIA: Record<MediaSlot, MediaEntry> = {
     alt: "Adding recipes and a note to days in the Cuoco meal planner",
   },
   shop: {
-    hasVideo: false,
+    hasVideo: true,
     hasStill: true,
     hasSound: false,
     aspect: PHONE,
-    alt: "The Cuoco shopping list sorted into categories",
+    alt: "Adding a recipe's ingredients to the Cuoco shopping list, sorted into categories, and ticking items off",
   },
   cook: {
     hasVideo: true,
