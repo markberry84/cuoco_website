@@ -92,7 +92,8 @@ export function Journey() {
           </div>
           <div>
             <div className="sticky top-[14vh] flex h-[72vh] items-center justify-center">
-              <PhoneFrame className="w-[min(17rem,calc(64vh*0.461))]">
+              <div className="flex flex-col items-center gap-4">
+              <PhoneFrame className="w-[min(17rem,calc(60vh*0.461))]">
                 <div className="relative w-full" style={{ aspectRatio: "720 / 1561" }}>
                   {STEPS.map((step, i) => (
                     <div
@@ -107,15 +108,21 @@ export function Journey() {
                   ))}
                 </div>
               </PhoneFrame>
+              {/* Names the step the phone is showing, so the pairing is never in doubt */}
+              <p className="font-serif text-sm tracking-[0.2em] text-brass" aria-live="polite">
+                {STEPS[current].num} · {STEPS[current].title.toUpperCase()}
+              </p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Phone and tablet widths: each step stacked with its own clip */}
-        <div className="flex flex-col gap-20 lg:hidden">
+        <div className="flex flex-col gap-8 lg:hidden">
           {STEPS.map((step) => (
             <FadeIn key={step.slot}>
-              <div className="mx-auto max-w-md text-center">
+              {/* Each step is its own card, so a phone can't be read as belonging to the next step */}
+              <div className="mx-auto max-w-md rounded-3xl border border-line-soft bg-cream px-6 py-10 text-center">
                 <StepText step={step} />
                 <PhoneFrame className="mx-auto mt-8 w-56">
                   <Clip slot={step.slot} />
