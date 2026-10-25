@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ChatFrame } from "@/components/ChatFrame";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { Clip } from "@/components/Clip";
@@ -66,15 +65,18 @@ export function Hero() {
     return () => window.clearTimeout(timer);
   }, [side, stopped, pageVisible]);
 
+  // On computers both frames are visible (the inactive one dimmed); when clips can't
+  // autoplay both are shown at full strength. On phones one frame shows at a time,
+  // in a box of fixed height, even when clips can't autoplay.
   const isOn = (s: Side) => stopped || side === s;
 
   const frameClass = (s: Side) =>
     cn(
-      "flex flex-col items-center gap-3 transition-all duration-700 ease-out",
-      !stopped && "absolute inset-0 justify-center md:static",
+      "absolute inset-0 flex flex-col items-center justify-center gap-3 transition-all duration-700 ease-out md:static",
+      side === s ? "opacity-100" : "pointer-events-none opacity-0",
       isOn(s)
-        ? "opacity-100 scale-100"
-        : "pointer-events-none opacity-0 md:pointer-events-auto md:scale-[0.97] md:opacity-30",
+        ? "md:pointer-events-auto md:scale-100 md:opacity-100"
+        : "md:pointer-events-auto md:scale-[0.97] md:opacity-30",
     );
 
   const lineClass = (s: Side) =>
@@ -93,11 +95,8 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-5xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
+        {/* CSS entrance, so the hero is visible even before (or without) JavaScript */}
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both">
           <p className="mb-5 font-serif text-sm font-medium tracking-[0.3em] text-brass">CUOCO</p>
 
           <p className="mb-5 font-serif text-[2.5rem] font-normal leading-[1.1] sm:text-5xl md:text-6xl">
@@ -114,17 +113,12 @@ export function Hero() {
             Cuoco is the recipe app that works inside Claude and ChatGPT, and talks you through
             dinner while you cook.
           </h1>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="animate-in fade-in slide-in-from-bottom-8 delay-200 duration-1000 fill-mode-both">
           <div
             className={cn(
-              "mx-auto max-w-4xl md:grid md:h-auto md:grid-cols-[1.3fr_1fr] md:items-center md:gap-10",
-              stopped ? "flex flex-col items-center gap-10" : "relative h-[440px]",
+              "relative mx-auto h-[440px] max-w-4xl md:grid md:h-auto md:grid-cols-[1.3fr_1fr] md:items-center md:gap-10",
             )}
           >
             <div className={frameClass("chat")} data-side="chat" data-on={isOn("chat")}>
@@ -136,6 +130,7 @@ export function Hero() {
                   stillSeconds={STILL_SECONDS}
                   onEnded={() => setSide("cook")}
                   onUnavailable={() => setStopped(true)}
+                  manualPlay={stopped}
                 />
               </ChatFrame>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-brass">
@@ -154,6 +149,7 @@ export function Hero() {
                     onEnded={() => setSide("chat")}
                     onUnavailable={() => setStopped(true)}
                     onTime={setCookTime}
+                    manualPlay={stopped}
                   />
                 </PhoneFrame>
                 {(stopped || side === "cook") && (
@@ -166,25 +162,31 @@ export function Hero() {
             </div>
           </div>
 
-          {!stopped && (
-            <div className="mt-4 flex justify-center gap-2 md:hidden" aria-hidden="true">
-              {(["chat", "cook"] as const).map((s) => (
+          <div className="mt-4 flex justify-center gap-1 md:hidden">
+            {(["chat", "cook"] as const).map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSide(s)}
+                aria-label={s === "chat" ? "Show the assistant clip" : "Show the kitchen clip"}
+                aria-pressed={side === s}
+                className="flex h-6 items-center px-1"
+              >
                 <span
-                  key={s}
                   className={cn(
-                    "h-1.5 rounded-full transition-all duration-500",
+                    "block h-1.5 rounded-full transition-all duration-500",
                     side === s ? "w-5 bg-brass" : "w-1.5 bg-line",
                   )}
                 />
-              ))}
-            </div>
-          )}
+              </button>
+            ))}
+          </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             <AppStoreButton placement="hero" />
             <QrCode />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

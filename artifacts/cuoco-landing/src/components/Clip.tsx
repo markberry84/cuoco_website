@@ -22,6 +22,8 @@ type ClipProps = {
   sound?: boolean;
   /** How long a slot with no video counts as one play-through. */
   stillSeconds?: number;
+  /** Offer a play button whenever the clip isn't playing by itself (used when the hero can't autoplay). */
+  manualPlay?: boolean;
   className?: string;
 };
 
@@ -34,6 +36,7 @@ export function Clip({
   onTime,
   sound = false,
   stillSeconds,
+  manualPlay = false,
   className,
 }: ClipProps) {
   const media = MEDIA[slot];
@@ -46,6 +49,8 @@ export function Clip({
   const [unavailable, setUnavailable] = useState(false);
   const [startedByHand, setStartedByHand] = useState(false);
   const [muted, setMuted] = useState(true);
+  // The video layer only covers the still once it has a frame to show.
+  const [hasFrame, setHasFrame] = useState(false);
 
   // Callbacks are read through refs so a parent re-render never restarts playback.
   const onEndedRef = useRef(onEnded);
@@ -76,7 +81,7 @@ export function Clip({
     if (shouldPlay && !unavailable) {
       video.preload = "auto";
       video.play().catch(markUnavailable);
-    } else if (!startedByHand || !inView || !active || !pageVisible) {
+    } else if (!startedByHand || !inView || !pageVisible) {
       video.pause();
     }
   }, [shouldPlay, unavailable, startedByHand, inView, active, pageVisible, markUnavailable]);
@@ -118,7 +123,9 @@ export function Clip({
     setMuted(video.muted);
   };
 
-  const showVideo = media.hasVideo && (!unavailable || startedByHand);
+  const showVideo = media.hasVideo && hasFrame && (!unavailable || startedByHand);
+  const showPlayButton =
+    media.hasVideo && !startedByHand && (unavailable || (manualPlay && !shouldPlay));
 
   return (
     <div
@@ -156,8 +163,14 @@ export function Clip({
           playsInline
           loop={loop}
           preload="none"
-          aria-label={media.alt}
-          onEnded={() => onEndedRef.current?.()}
+          aria-hidden="true"
+          onLoadedData={() => setHasFrame(true)}
+          onPlaying={() => setHasFrame(true)}
+          onEnded={() => {
+            // A clip started by hand can be played again from its button.
+            if (!loop) setStartedByHand(false);
+            onEndedRef.current?.();
+          }}
           onError={markUnavailable}
           onTimeUpdate={(e) => onTimeRef.current?.(e.currentTarget.currentTime)}
         >
@@ -166,7 +179,7 @@ export function Clip({
         </video>
       )}
 
-      {media.hasVideo && unavailable && !startedByHand && (
+      {showPlayButton && (
         <button
           type="button"
           onClick={playByHand}

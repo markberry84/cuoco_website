@@ -1,17 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const firstRender = useRef(true);
 
   useEffect(() => {
     const id = window.location.hash.slice(1);
     const target = id ? document.getElementById(id) : null;
+    // On first load leave the scroll alone (the visitor may already have scrolled the
+    // ready-made page, or the browser is restoring their place); only jump to a #section.
+    const isFirst = firstRender.current;
+    firstRender.current = false;
     if (target) {
       target.scrollIntoView();
-    } else {
+    } else if (!isFirst) {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
   }, [location]);

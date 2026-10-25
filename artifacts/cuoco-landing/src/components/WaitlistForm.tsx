@@ -41,7 +41,7 @@ export function WaitlistForm() {
         }}
       >
         <span style={{ color: "hsl(35 55% 65%)" }}>✓</span>
-        You're on the list — we'll be in touch when we launch.
+        You're on the list. We'll email you when Cuoco is on Android.
       </div>
     );
   }
@@ -50,6 +50,7 @@ export function WaitlistForm() {
     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
       <input
         type="email"
+        aria-label="Email address"
         value={email}
         onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
         placeholder="your@email.com"
