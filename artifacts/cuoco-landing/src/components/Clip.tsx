@@ -174,8 +174,8 @@ export function Clip({
           onError={markUnavailable}
           onTimeUpdate={(e) => onTimeRef.current?.(e.currentTarget.currentTime)}
         >
-          <source src={mediaUrl(slot, "webm")} type="video/webm" onError={() => undefined} />
-          <source src={mediaUrl(slot, "mp4")} type="video/mp4" onError={markUnavailable} />
+          <source src={mediaUrl(slot, "mp4")} type="video/mp4" onError={() => undefined} />
+          <source src={mediaUrl(slot, "webm")} type="video/webm" onError={markUnavailable} />
         </video>
       )}
 

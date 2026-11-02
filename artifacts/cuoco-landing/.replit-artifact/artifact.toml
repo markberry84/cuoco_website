@@ -23,6 +23,46 @@ publicDir = "artifacts/cuoco-landing/dist/public"
 serve = "static"
 
 [[services.production.rewrites]]
+from = "/connect"
+to = "/connect.html"
+
+[[services.production.rewrites]]
+from = "/connect/"
+to = "/connect.html"
+
+[[services.production.rewrites]]
+from = "/voice"
+to = "/voice.html"
+
+[[services.production.rewrites]]
+from = "/voice/"
+to = "/voice.html"
+
+[[services.production.rewrites]]
+from = "/support"
+to = "/support.html"
+
+[[services.production.rewrites]]
+from = "/support/"
+to = "/support.html"
+
+[[services.production.rewrites]]
+from = "/privacy"
+to = "/privacy.html"
+
+[[services.production.rewrites]]
+from = "/privacy/"
+to = "/privacy.html"
+
+[[services.production.rewrites]]
+from = "/terms"
+to = "/terms.html"
+
+[[services.production.rewrites]]
+from = "/terms/"
+to = "/terms.html"
+
+[[services.production.rewrites]]
 from = "/*"
 to = "/index.html"
 

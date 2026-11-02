@@ -75,7 +75,9 @@ Every App Store button and the QR code carry an App Store Connect campaign link 
 
 ## Ready-made pages (search engines and AI assistants)
 
-`pnpm run build` builds the site, renders every page to HTML (`scripts/prerender.mjs`) and writes `dist/public/<page>/index.html` and `<page>.html` with the page's own title, description, canonical address, social tags and structured data. Visitors and crawlers that never run JavaScript still get the full text. In the browser, `src/main.tsx` brings the ready-made page to life only if it matches the address; otherwise it renders from scratch (the host serves the home page's file for unknown addresses).
+`pnpm run build` builds the site, renders every page to HTML (`scripts/prerender.mjs`) and writes `dist/public/<page>.html` with the page's own title, description, canonical address, social tags and structured data. Visitors and crawlers that never run JavaScript still get the full text. In the browser, `src/main.tsx` brings the ready-made page to life only if it matches the address; otherwise it renders from scratch (the host serves the home page's file for unknown addresses).
+
+Each page needs its own two rewrites (`/<page>` and `/<page>/`) in `.replit-artifact/artifact.toml`, above the catch-all. Without them the host answers with the home page's file. A new page must be added there too. Do not write `<page>/` folders: the host redirects to the trailing-slash address and then serves the home page.
 
 FAQ and Support answers are kept in the page while closed (`forceMount`) so they can be indexed.
 

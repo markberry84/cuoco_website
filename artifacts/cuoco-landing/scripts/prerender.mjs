@@ -1,7 +1,7 @@
 // Writes one ready-made HTML file per page, so visitors, search engines and AI
 // assistants that never run JavaScript still receive each page's own title,
 // description and full text. Runs as the last step of `pnpm run build`.
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -34,9 +34,9 @@ for (const path of PAGE_PATHS) {
   if (path === "/") {
     await writeFile(join(publicDir, "index.html"), html);
   } else {
-    // Static hosts differ on which file answers "/connect", so write both forms.
-    await mkdir(join(publicDir, path), { recursive: true });
-    await writeFile(join(publicDir, path, "index.html"), html);
+    // One file per page, reached through the rewrites in .replit-artifact/artifact.toml.
+    // No <page>/ folder: the host would redirect "/connect" to "/connect/" and then
+    // answer that with the home page's file.
     await writeFile(join(publicDir, `${path}.html`), html);
   }
   console.log(`prerender: ${path}`);
