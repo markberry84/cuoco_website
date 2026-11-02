@@ -1,6 +1,6 @@
 {
   "title": "Privacy Policy",
-  "updated": "17 October 2026",
+  "updated": "2 November 2026",
   "blocks": [
     {
       "type": "h2",
@@ -125,6 +125,15 @@
           {
             "text": " — a unique identifier assigned by our authentication provider (Supabase) to link your data securely."
           }
+        ],
+        [
+          {
+            "text": "Name and profile picture link",
+            "bold": true
+          },
+          {
+            "text": " — if you sign in with Google, we receive your name and a link to your profile picture, where your Google account provides them. We use these only to show your profile in Settings. We do not receive these from Sign In with Apple."
+          }
         ]
       ]
     },
@@ -247,12 +256,12 @@
         ],
         [
           {
-            "text": "A hashed device identifier (we do not store your raw device ID)"
+            "text": "A device identifier that Apple provides for our app (this is not an advertising identifier)"
           }
         ],
         [
           {
-            "text": "Approximate country and city (derived from IP address at the time of first use; IP address itself is stored as a hash and is not retained in readable form)"
+            "text": "Approximate country and city, worked out from your IP address when the app connects. To do this, your IP address is sent to IPinfo (see Section 5). We store only a hashed version of your IP address and do not keep it in readable form"
           }
         ]
       ]
@@ -546,7 +555,7 @@
             "bold": true
           },
           {
-            "text": " Email address, user ID, recipes, preferences, usage data, device data"
+            "text": " Email address, name and profile picture link (if provided by Google), user ID, recipes, preferences, usage data, device data"
           }
         ],
         [
@@ -782,7 +791,7 @@
             "bold": true
           },
           {
-            "text": " Google provides us with your email address at sign-in. We store this solely for account identification and management."
+            "text": " Google provides us with your email address at sign-in, and your name and a link to your profile picture where your Google account provides them. We store these solely for account identification and management, and to show your profile in Settings."
           }
         ],
         [
@@ -805,6 +814,55 @@
           {
             "text": "https://policies.google.com/privacy",
             "href": "https://policies.google.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "IPinfo"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Working out approximate location from an IP address"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " Your IP address"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://ipinfo.io/privacy-policy",
+            "href": "https://ipinfo.io/privacy-policy"
           }
         ]
       ]
@@ -875,7 +933,7 @@
         [
           [
             {
-              "text": "Account data (email, preferences)"
+              "text": "Account data (email, name, profile picture link, preferences)"
             }
           ],
           [
