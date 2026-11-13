@@ -1,5 +1,6 @@
 import { SITE } from "@/content/site";
 import { FAQ } from "@/content/faq";
+import { SUPPORT } from "@/content/support";
 import { CHATGPT_STEPS, CLAUDE_STEPS } from "@/content/connect";
 
 export type PagePath = "/" | "/connect" | "/voice" | "/support" | "/privacy" | "/terms";
@@ -53,7 +54,10 @@ const organization = {
   logo: `${SITE.url}/favicon.png`,
   contactPoint: { "@type": "ContactPoint", email: SITE.email, contactType: "customer support" },
   founder: { "@type": "Person", name: "Mark Berry" },
+  sameAs: [`https://apps.apple.com/app/id${SITE.appStoreId}`, SITE.instagram, SITE.tiktok],
 };
+
+const price = (p: string) => p.replace(/[^\d.]/g, "");
 
 const mobileApplication = {
   "@context": "https://schema.org",
@@ -77,25 +81,47 @@ const mobileApplication = {
     "Nutrition and allergen information",
     "Cook Mode with timers",
   ],
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "GBP",
-    description: "Free 7-day trial, then from £2.99/month",
-  },
+  downloadUrl: `https://apps.apple.com/app/id${SITE.appStoreId}`,
+  image: `${SITE.url}/cuoco-icon-256.png`,
+  screenshot: ["save", "plan", "shop", "cook"].map((slot) => `${SITE.url}/media/${slot}.jpg`),
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Free trial",
+      price: "0",
+      priceCurrency: "GBP",
+      description: "Free 7-day trial of every feature, no card required",
+    },
+    {
+      "@type": "Offer",
+      name: "Cuoco Pro",
+      price: price(SITE.prices.pro),
+      priceCurrency: "GBP",
+      description: "Monthly subscription",
+    },
+    {
+      "@type": "Offer",
+      name: "Cuoco Premium",
+      price: price(SITE.prices.premium),
+      priceCurrency: "GBP",
+      description: "Monthly subscription with a higher monthly AI allowance",
+    },
+  ],
   author: { "@type": "Person", name: "Mark Berry" },
   publisher: { "@type": "Organization", name: "Cuoco", url: SITE.url },
 };
 
-const faqPage = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQ.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
-};
+function faqPage(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
 
 function howTo(assistant: string, steps: string[]) {
   return {
@@ -108,7 +134,8 @@ function howTo(assistant: string, steps: string[]) {
 }
 
 export function structuredData(path: PagePath): object[] {
-  if (path === "/") return [organization, mobileApplication, faqPage];
+  if (path === "/") return [organization, mobileApplication, faqPage(FAQ)];
+  if (path === "/support") return [organization, faqPage(SUPPORT)];
   if (path === "/connect")
     return [organization, howTo("Claude", CLAUDE_STEPS), howTo("ChatGPT", CHATGPT_STEPS)];
   return [organization];
