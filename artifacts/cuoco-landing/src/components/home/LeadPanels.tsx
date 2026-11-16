@@ -15,7 +15,7 @@ const PANELS = [
     title: "Works with Claude and ChatGPT",
     text: "Connect Cuoco to the assistant you already use. Ask it to plan your week, build your shopping list or save a recipe, and it's in the app.",
     footnote: undefined as string | undefined,
-    link: { href: "/connect", label: "How to connect" },
+    link: { href: "/recipe-app-for-chatgpt-and-claude", label: "What your assistant can do" },
   },
 ];
 

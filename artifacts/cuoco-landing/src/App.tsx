@@ -10,6 +10,8 @@ import Terms from "@/pages/Terms";
 import Connect from "@/pages/Connect";
 import Voice from "@/pages/Voice";
 import Support from "@/pages/Support";
+import AssistantRecipes from "@/pages/AssistantRecipes";
+import SaveRecipes from "@/pages/SaveRecipes";
 import { titleFor } from "@/content/seo";
 
 const queryClient = new QueryClient();
@@ -23,6 +25,8 @@ function Router() {
       <Route path="/connect" component={Connect} />
       <Route path="/voice" component={Voice} />
       <Route path="/support" component={Support} />
+      <Route path="/recipe-app-for-chatgpt-and-claude" component={AssistantRecipes} />
+      <Route path="/save-online-recipes" component={SaveRecipes} />
       <Route component={NotFound} />
     </Switch>
   );

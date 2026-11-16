@@ -1,7 +1,7 @@
 import { SiAppstore } from "react-icons/si";
 import { SITE } from "@/content/site";
 
-export type Placement = "hero" | "nav" | "download" | "connect" | "voice" | "qr";
+export type Placement = "hero" | "nav" | "download" | "connect" | "voice" | "qr" | "assistants" | "save";
 
 export function appStoreUrl(placement: Placement): string {
   if (!SITE.campaignProvider) return SITE.appStoreBase;

@@ -1,16 +1,25 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { Clip } from "@/components/Clip";
 import { FadeIn } from "@/components/FadeIn";
 import type { MediaSlot } from "@/content/media";
 import { cn } from "@/lib/utils";
 
-const STEPS: { num: string; title: string; slot: MediaSlot; text: string }[] = [
+const STEPS: {
+  num: string;
+  title: string;
+  slot: MediaSlot;
+  text: string;
+  link?: { href: string; label: string };
+}[] = [
   {
     num: "01",
     title: "Save",
     slot: "save",
     text: "Import a recipe from a link, a photo, or text you paste in. Share one straight into Cuoco from TikTok, Safari or any app with a share button. Cuoco adds nutrition, cuisine, meal type and allergens for you.",
+    link: { href: "/save-online-recipes", label: "How saving a recipe works" },
   },
   {
     num: "02",
@@ -38,6 +47,15 @@ function StepText({ step }: { step: (typeof STEPS)[number] }) {
       <p className="mb-3 font-serif text-sm tracking-[0.2em] text-brass">{step.num}</p>
       <h3 className="mb-4 text-4xl font-normal text-ink md:text-5xl">{step.title}</h3>
       <p className="text-base leading-relaxed text-body md:text-lg">{step.text}</p>
+      {step.link && (
+        <Link
+          href={step.link.href}
+          className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brass transition-colors duration-150 hover:text-ink"
+        >
+          {step.link.label}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      )}
     </>
   );
 }

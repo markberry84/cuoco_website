@@ -1,9 +1,18 @@
 import { SITE } from "@/content/site";
 import { FAQ } from "@/content/faq";
 import { SUPPORT } from "@/content/support";
+import { ASSISTANT_QUESTIONS, SAVE_QUESTIONS, SAVE_STEPS } from "@/content/guides";
 import { CHATGPT_STEPS, CLAUDE_STEPS } from "@/content/connect";
 
-export type PagePath = "/" | "/connect" | "/voice" | "/support" | "/privacy" | "/terms";
+export type PagePath =
+  | "/"
+  | "/connect"
+  | "/voice"
+  | "/recipe-app-for-chatgpt-and-claude"
+  | "/save-online-recipes"
+  | "/support"
+  | "/privacy"
+  | "/terms";
 
 export const PAGES: Record<PagePath, { title: string; description: string }> = {
   "/": {
@@ -20,6 +29,16 @@ export const PAGES: Record<PagePath, { title: string; description: string }> = {
     title: "Voice Cooking with Ask Cuoco and Hey Cuoco",
     description:
       "Ask Cuoco for the next step, a timer or a substitute and hear the answer while you cook. Hey Cuoco wake word in Cook Mode on iOS 26 or later.",
+  },
+  "/recipe-app-for-chatgpt-and-claude": {
+    title: "The Recipe App That Works With ChatGPT and Claude — Cuoco",
+    description:
+      "Cuoco lets ChatGPT and Claude use your own saved recipes, meal plan and shopping list. See what you can ask, what it can do and how to connect.",
+  },
+  "/save-online-recipes": {
+    title: "How to Save Recipes From Websites and TikTok on iPhone — Cuoco",
+    description:
+      "Share a recipe from any website or a TikTok into Cuoco and it becomes a proper recipe with ingredients, steps and nutrition. Two taps, on iPhone.",
   },
   "/support": {
     title: "Cuoco Support",
@@ -136,6 +155,19 @@ function howTo(assistant: string, steps: string[]) {
 export function structuredData(path: PagePath): object[] {
   if (path === "/") return [organization, mobileApplication, faqPage(FAQ)];
   if (path === "/support") return [organization, faqPage(SUPPORT)];
+  if (path === "/recipe-app-for-chatgpt-and-claude") return [organization, faqPage(ASSISTANT_QUESTIONS)];
+  if (path === "/save-online-recipes")
+    return [
+      organization,
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: "Save a recipe from a website with Cuoco",
+        description: "Share a recipe page into Cuoco on iPhone to save it as a recipe.",
+        step: SAVE_STEPS.map((text, i) => ({ "@type": "HowToStep", position: i + 1, text })),
+      },
+      faqPage(SAVE_QUESTIONS),
+    ];
   if (path === "/connect")
     return [organization, howTo("Claude", CLAUDE_STEPS), howTo("ChatGPT", CHATGPT_STEPS)];
   return [organization];

@@ -48,6 +48,7 @@ artifacts/cuoco-landing/
 - **"Hands-free"** appears only where Hey Cuoco is described, next to its conditions (switched on, Cook Mode, iOS 26 or later). Elsewhere voice is press-to-talk. One exception, agreed by Mark on 16 Nov 2026: the home page title, which matches the App Store name ("Cuoco: Hands-Free AI Cooking").
 - **iPhone only.** Android is a waitlist.
 - **The connector section** must only claim what the app's MCP tools do. The source of truth is `chef_app_reference.md` → MCP Connector → *How users connect*; update `src/content/connect.ts` whenever that changes.
+- **Guide pages** (`/recipe-app-for-chatgpt-and-claude`, `/save-online-recipes`) each answer one question people search for. Their lists and questions live in `src/content/guides.ts`; the assistant page reuses `connect.ts`, so the connector rule above covers it too. The save page says "Instagram is on the way" until v1.5.0 is live, and its top clip is a web recipe until a TikTok recording exists. A new page needs: a route in `App.tsx`, an entry in `seo.ts`, rewrites in `.replit-artifact/artifact.toml`, a sitemap entry, `PAGE_SOURCES` in `scripts/prerender.mjs`, and a line in `llms.txt`.
 - **Plan name is "Pro"**, never "Core". UK spelling. No exclamation marks.
 
 ## Privacy Policy and Terms
@@ -71,7 +72,7 @@ Raw recordings are kept outside the repo (`Desktop/Claude/cuoco_recordings`). Wh
 
 ## App Store links
 
-Every App Store button and the QR code carry an App Store Connect campaign link (provider `128796440`, set in `site.ts`), with its own campaign name: `hero`, `nav`, `download`, `connect`, `voice`, `qr`. Downloads per placement show in App Store Connect → Analytics.
+Every App Store button and the QR code carry an App Store Connect campaign link (provider `128796440`, set in `site.ts`), with its own campaign name: `hero`, `nav`, `download`, `connect`, `voice`, `qr`, `assistants`, `save`. Downloads per placement show in App Store Connect → Analytics.
 
 ## Ready-made pages (search engines and AI assistants)
 

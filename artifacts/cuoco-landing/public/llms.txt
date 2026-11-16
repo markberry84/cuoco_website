@@ -34,6 +34,8 @@ Cuoco is a mobile app for saving recipes, planning meals, building a shopping li
 - Home: https://get-cuoco.app/
 - Connect Cuoco to Claude and ChatGPT: https://get-cuoco.app/connect
 - Voice cooking: https://get-cuoco.app/voice
+- The recipe app for ChatGPT and Claude: https://get-cuoco.app/recipe-app-for-chatgpt-and-claude
+- How to save a recipe from any website or TikTok: https://get-cuoco.app/save-online-recipes
 - Support: https://get-cuoco.app/support
 - Privacy Policy: https://get-cuoco.app/privacy
 - Terms of Service: https://get-cuoco.app/terms

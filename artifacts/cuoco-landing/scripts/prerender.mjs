@@ -54,6 +54,8 @@ const PAGE_SOURCES = {
   "/connect": ["src/pages/Connect.tsx", "src/content/connect.ts"],
   "/voice": ["src/pages/Voice.tsx"],
   "/support": ["src/pages/Support.tsx", "src/content/support.ts"],
+  "/recipe-app-for-chatgpt-and-claude": ["src/pages/AssistantRecipes.tsx", "src/content/guides.ts", "src/content/connect.ts"],
+  "/save-online-recipes": ["src/pages/SaveRecipes.tsx", "src/content/guides.ts"],
   "/privacy": ["src/content/legal/privacy.json"],
   "/terms": ["src/content/legal/terms.json"],
 };

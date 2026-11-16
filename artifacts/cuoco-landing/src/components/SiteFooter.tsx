@@ -6,6 +6,8 @@ import { SITE } from "@/content/site";
 const FOOTER_LINKS = [
   { href: "/voice", label: "Voice" },
   { href: "/connect", label: "Connect" },
+  { href: "/recipe-app-for-chatgpt-and-claude", label: "For ChatGPT and Claude" },
+  { href: "/save-online-recipes", label: "Save recipes" },
   { href: "/support", label: "Support" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Service" },

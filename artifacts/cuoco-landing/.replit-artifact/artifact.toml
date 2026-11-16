@@ -62,6 +62,22 @@ to = "/terms.html"
 from = "/terms/"
 to = "/terms.html"
 
+[[services.production.rewrites]]
+from = "/recipe-app-for-chatgpt-and-claude"
+to = "/recipe-app-for-chatgpt-and-claude.html"
+
+[[services.production.rewrites]]
+from = "/recipe-app-for-chatgpt-and-claude/"
+to = "/recipe-app-for-chatgpt-and-claude.html"
+
+[[services.production.rewrites]]
+from = "/save-online-recipes"
+to = "/save-online-recipes.html"
+
+[[services.production.rewrites]]
+from = "/save-online-recipes/"
+to = "/save-online-recipes.html"
+
 [services.env]
 PORT = "18441"
 BASE_PATH = "/"
