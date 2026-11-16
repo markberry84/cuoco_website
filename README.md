@@ -45,7 +45,7 @@ artifacts/cuoco-landing/
 ## Rules for the copy
 
 - **Facts are written once**, in `src/content/`. Prices, the connector address and the App Store id come from `site.ts`.
-- **"Hands-free"** appears only where Hey Cuoco is described, next to its conditions (switched on, Cook Mode, iOS 26 or later). Elsewhere voice is press-to-talk.
+- **"Hands-free"** appears only where Hey Cuoco is described, next to its conditions (switched on, Cook Mode, iOS 26 or later). Elsewhere voice is press-to-talk. One exception, agreed by Mark on 16 Nov 2026: the home page title, which matches the App Store name ("Cuoco: Hands-Free AI Cooking").
 - **iPhone only.** Android is a waitlist.
 - **The connector section** must only claim what the app's MCP tools do. The source of truth is `chef_app_reference.md` → MCP Connector → *How users connect*; update `src/content/connect.ts` whenever that changes.
 - **Plan name is "Pro"**, never "Core". UK spelling. No exclamation marks.

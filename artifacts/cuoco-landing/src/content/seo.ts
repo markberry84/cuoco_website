@@ -7,7 +7,7 @@ export type PagePath = "/" | "/connect" | "/voice" | "/support" | "/privacy" | "
 
 export const PAGES: Record<PagePath, { title: string; description: string }> = {
   "/": {
-    title: "Cuoco: Voice-Guided Cooking and Recipe App for iPhone",
+    title: "Cuoco: Hands-Free AI Cooking and Recipe App for iPhone",
     description:
       "Save recipes from anywhere, plan meals, build your shopping list and cook by voice. Works with Claude and ChatGPT. Free 7-day trial on the App Store.",
   },
