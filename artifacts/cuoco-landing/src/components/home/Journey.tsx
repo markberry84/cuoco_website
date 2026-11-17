@@ -18,7 +18,7 @@ const STEPS: {
     num: "01",
     title: "Save",
     slot: "save",
-    text: "Import a recipe from a link, a photo, or text you paste in. Share one straight into Cuoco from TikTok, Safari or any app with a share button. Cuoco adds nutrition, cuisine, meal type and allergens for you.",
+    text: "Import a recipe from a link, a photo, or text you paste in. Share one straight into Cuoco from TikTok, Instagram, Safari or any app with a share button. Cuoco adds nutrition, cuisine, meal type and allergens for you.",
     link: { href: "/save-online-recipes", label: "How saving a recipe works" },
   },
   {

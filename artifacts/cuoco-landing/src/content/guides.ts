@@ -53,12 +53,12 @@ export const SAVE_QUESTIONS: GuideQuestion[] = [
     a: "Most pages with a recipe on them. Cuoco reads the page itself, so it doesn't depend on a list of supported sites. If a site won't let Cuoco read it, for example behind a paywall, paste the recipe text or use a screenshot instead.",
   },
   {
-    q: "What if a TikTok recipe isn't written in the caption?",
-    a: "Cuoco reads the written caption. If the recipe is only spoken or shown on screen, take screenshots and use photo import instead, which can read a recipe spread over several images.",
+    q: "What if the recipe isn't written in the caption?",
+    a: "For TikTok and Instagram, Cuoco reads the written caption. If the recipe is only spoken or shown on screen, or a post can't be read, take screenshots and import them as photos instead. Cuoco can read a recipe spread over several images.",
   },
   {
     q: "Can I save recipes that aren't online?",
-    a: "Yes. Photograph a cookbook page or a handwritten card, or paste in text, and Cuoco turns it into a recipe in the same way.",
+    a: "Yes. Photograph a cookbook recipe, up to five pages in one go, or a handwritten card, or paste in text, and Cuoco turns it into a recipe in the same way.",
   },
   {
     q: "Is it free?",

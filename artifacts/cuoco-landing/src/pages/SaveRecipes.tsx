@@ -49,11 +49,11 @@ export default function SaveRecipes() {
         </p>
       </Section>
 
-      <Section title="From TikTok, the same way" narrow>
+      <Section title="From TikTok and Instagram, the same way" narrow>
         <p className="text-center text-base leading-relaxed text-body">
-          Found a recipe in a TikTok? Tap Share on the video and choose Cuoco. Cuoco reads the
-          video's caption and saves the recipe, with the creator credited in its notes. Instagram
-          is on the way.
+          Found a recipe in a TikTok, an Instagram post or a Reel? Tap Share and choose Cuoco, or
+          paste the link. Cuoco reads the caption and saves the recipe, with the creator credited
+          in its notes.
         </p>
       </Section>
 

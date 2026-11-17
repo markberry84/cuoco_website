@@ -36,9 +36,9 @@ export const PAGES: Record<PagePath, { title: string; description: string }> = {
       "Cuoco lets ChatGPT and Claude use your own saved recipes, meal plan and shopping list. See what you can ask, what it can do and how to connect.",
   },
   "/save-online-recipes": {
-    title: "How to Save Recipes From Websites and TikTok on iPhone — Cuoco",
+    title: "How to Save Recipes From TikTok, Instagram and Websites on iPhone — Cuoco",
     description:
-      "Share a recipe from any website or a TikTok into Cuoco and it becomes a proper recipe with ingredients, steps and nutrition. Two taps, on iPhone.",
+      "Share a recipe from TikTok, Instagram or any website into Cuoco and it becomes a proper recipe with ingredients, steps and nutrition. Two taps, on iPhone.",
   },
   "/support": {
     title: "Cuoco Support",
@@ -93,7 +93,7 @@ const mobileApplication = {
     "Voice assistant for cooking",
     "Hey Cuoco wake word in Cook Mode (iOS 26 or later, optional)",
     "Works with Claude and ChatGPT",
-    "Import recipes from links, photos, text and TikTok",
+    "Import recipes from links, photos, text, TikTok and Instagram",
     "Shopping list sorted by category",
     "Meal planner",
     "Recipe collections",
