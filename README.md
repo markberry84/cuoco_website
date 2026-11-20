@@ -106,6 +106,6 @@ PORT=1 BASE_PATH=/ npx -y pnpm@10 --filter @workspace/cuoco-landing run build
 Push to `main`, and the site goes live by itself in a few minutes:
 
 1. **GitHub Actions** (`.github/workflows/build-for-hostinger.yml`) installs, typechecks and builds the site, then saves the finished files to the **`hostinger`** branch. Never edit that branch by hand — every build replaces it. Progress: the repo's **Actions** tab.
-2. **Hostinger** deploys the `hostinger` branch into `public_html` (hPanel → Advanced → Git, auto-deploy on push).
+2. **Hostinger** deploys the `hostinger` branch into `public_html`. It is connected through Hostinger's GitHub app (hPanel → website get-cuoco.app → Advanced → Git; the app can see this repo only), set up 20 Nov 2026. The live site is served by LiteSpeed, which reads `public/.htaccess`.
 
 The production build reads `artifacts/cuoco-landing/.env.production`: `VITE_API_BASE_URL` points the Android waitlist form at the Cuoco backend (`POST /api/waitlist` in `markberry84/chef_app`). Sign-ups are stored in Supabase (`waitlist_signups`; Table Editor → Export CSV) and each one emails hello@get-cuoco.app through Resend.
