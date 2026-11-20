@@ -63,6 +63,8 @@ jobs:
             git -C deploy remote add origin "$REPO"
           fi
           rsync -a --delete --exclude .git artifacts/cuoco-landing/dist/public/ deploy/
+          # https://get-cuoco.app/version.txt shows which commit is live.
+          echo "${GITHUB_SHA::7}" > deploy/version.txt
           cd deploy
           git add -A
           if git diff --cached --quiet; then
