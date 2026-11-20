@@ -35,7 +35,7 @@ for (const path of PAGE_PATHS) {
   if (path === "/") {
     await writeFile(join(publicDir, "index.html"), html);
   } else {
-    // One file per page, reached through the rewrites in .replit-artifact/artifact.toml.
+    // One file per page, reached through the clean-address rules in public/.htaccess.
     // No <page>/ folder: the host would redirect "/connect" to "/connect/" and then
     // answer that with the home page's file.
     await writeFile(join(publicDir, `${path}.html`), html);

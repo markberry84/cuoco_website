@@ -1,6 +1,6 @@
 {
   "title": "Privacy Policy",
-  "updated": "2 November 2026",
+  "updated": "20 November 2026",
   "blocks": [
     {
       "type": "h2",
@@ -476,6 +476,36 @@
       ]
     },
     {
+      "type": "h3",
+      "text": "3.8 Android Waitlist"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "If you join the Android waitlist on our website, we store the email address you enter and the date you signed up. We use it only to email you when Cuoco is available on Android. It is not linked to a Cuoco account, and we do not use it for anything else. When you sign up, we also receive a notification email containing your address, sent through Resend (see Section 5)."
+          }
+        ]
+      ]
+    },
+    {
+      "type": "legal",
+      "label": "Legal basis (GDPR)",
+      "segs": [
+        {
+          "text": "Consent — you give us your email address for this purpose. You can ask us to remove it at any time by emailing "
+        },
+        {
+          "text": "hello@get-cuoco.app",
+          "href": "mailto:hello@get-cuoco.app"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
       "type": "h2",
       "text": "4. Data We Do Not Collect"
     },
@@ -578,6 +608,55 @@
           {
             "text": "https://supabase.com/privacy",
             "href": "https://supabase.com/privacy"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Resend"
+    },
+    {
+      "type": "p",
+      "lines": [
+        [
+          {
+            "text": "Role:",
+            "bold": true
+          },
+          {
+            "text": " Email delivery"
+          }
+        ],
+        [
+          {
+            "text": "Data shared:",
+            "bold": true
+          },
+          {
+            "text": " The email address entered on the Android waitlist, in a notification email sent to us"
+          }
+        ],
+        [
+          {
+            "text": "Location:",
+            "bold": true
+          },
+          {
+            "text": " United States"
+          }
+        ],
+        [
+          {
+            "text": "Privacy policy:",
+            "bold": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "https://resend.com/legal/privacy-policy",
+            "href": "https://resend.com/legal/privacy-policy"
           }
         ]
       ]
@@ -1011,6 +1090,18 @@
           [
             {
               "text": "Kept after account deletion, for as long as Cuoco offers a free trial"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Android waitlist email address"
+            }
+          ],
+          [
+            {
+              "text": "Until Cuoco launches on Android and we have emailed you, or until you ask us to remove it"
             }
           ]
         ]

@@ -1,6 +1,6 @@
 # get-cuoco.app
 
-The marketing website for **Cuoco**, the iPhone recipe app. Hosted and published on Replit (project "Cuoco Landing Page"); the code lives in this repo. The app itself is a separate repo (`markberry84/chef_app`).
+The marketing website for **Cuoco**, the iPhone recipe app. Hosted on Hostinger; GitHub builds it from this repo (see Publishing). Until November 2026 it was hosted on Replit. The app itself is a separate repo (`markberry84/chef_app`).
 
 The site was rebuilt in October 2026: a video-led home page leading with voice cooking and the Claude/ChatGPT connector, plus dedicated Connect, Voice and Support pages. Design and plan: `chef_app/docs/superpowers/specs/2026-10-10-website-rebuild-design.md` and `chef_app/docs/superpowers/plans/2026-10-11-website-rebuild.md`.
 
@@ -48,7 +48,7 @@ artifacts/cuoco-landing/
 - **"Hands-free"** appears only where Hey Cuoco is described, next to its conditions (switched on, Cook Mode, iOS 26 or later). Elsewhere voice is press-to-talk. One exception, agreed by Mark on 16 Nov 2026: the home page title, which matches the App Store name ("Cuoco: Hands-Free AI Cooking").
 - **iPhone only.** Android is a waitlist.
 - **The connector section** must only claim what the app's MCP tools do. The source of truth is `chef_app_reference.md` → MCP Connector → *How users connect*; update `src/content/connect.ts` whenever that changes.
-- **Guide pages** (`/recipe-app-for-chatgpt-and-claude`, `/save-online-recipes`) each answer one question people search for. Their lists and questions live in `src/content/guides.ts`; the assistant page reuses `connect.ts`, so the connector rule above covers it too. The save page says "Instagram is on the way" until v1.5.0 is live, and its top clip is a web recipe until a TikTok recording exists. A new page needs: a route in `App.tsx`, an entry in `seo.ts`, rewrites in `.replit-artifact/artifact.toml`, a sitemap entry, `PAGE_SOURCES` in `scripts/prerender.mjs`, and a line in `llms.txt`.
+- **Guide pages** (`/recipe-app-for-chatgpt-and-claude`, `/save-online-recipes`) each answer one question people search for. Their lists and questions live in `src/content/guides.ts`; the assistant page reuses `connect.ts`, so the connector rule above covers it too. The save page says "Instagram is on the way" until v1.5.0 is live, and its top clip is a web recipe until a TikTok recording exists. A new page needs: a route in `App.tsx`, an entry in `seo.ts`, a sitemap entry, `PAGE_SOURCES` in `scripts/prerender.mjs`, and a line in `llms.txt`.
 - **Plan name is "Pro"**, never "Core". UK spelling. No exclamation marks.
 
 ## Privacy Policy and Terms
@@ -76,9 +76,9 @@ Every App Store button and the QR code carry an App Store Connect campaign link 
 
 ## Ready-made pages (search engines and AI assistants)
 
-`pnpm run build` builds the site, renders every page to HTML (`scripts/prerender.mjs`) and writes `dist/public/<page>.html` with the page's own title, description, canonical address, social tags and structured data. Visitors and crawlers that never run JavaScript still get the full text. In the browser, `src/main.tsx` brings the ready-made page to life only if it matches the address; otherwise it renders from scratch (the host serves the home page's file for unknown addresses).
+`pnpm run build` builds the site, renders every page to HTML (`scripts/prerender.mjs`) and writes `dist/public/<page>.html` with the page's own title, description, canonical address, social tags and structured data. Visitors and crawlers that never run JavaScript still get the full text. In the browser, `src/main.tsx` brings the ready-made page to life only if it matches the address; otherwise it renders from scratch.
 
-Each page needs its own two rewrites (`/<page>` and `/<page>/`) in `.replit-artifact/artifact.toml`, above the catch-all. Without them the host answers with the home page's file. A new page must be added there too. Do not write `<page>/` folders: the host redirects to the trailing-slash address and then serves the home page.
+`public/.htaccess` (Hostinger's page rules) serves `/<page>` from `<page>.html` for any page that has one, sends `/<page>/` to `/<page>`, `www` and plain `http` to `https://get-cuoco.app`, and unknown addresses to `404.html` with a real 404. A new page needs no change there. Do not write `<page>/` folders.
 
 FAQ and Support answers are kept in the page while closed (`forceMount`) so they can be indexed.
 
@@ -86,7 +86,7 @@ FAQ and Support answers are kept in the page while closed (`forceMount`) so they
 
 Node is installed on the Mac; pnpm runs through `npx`.
 
-- `pnpm-workspace.yaml` excludes macOS build tools because Replit runs Linux. In the Mac's copy, the four `darwin-arm64` exclusion lines are deleted and the file is marked `git update-index --skip-worktree`, so that change is never committed. Don't add new dependencies from the Mac; the lockfile would no longer match Replit.
+- The lockfile covers the Mac (darwin-arm64) and GitHub Actions (linux-x64); `pnpm-workspace.yaml` excludes other platforms. New packages must be at least a day old (`minimumReleaseAge`).
 
 ```bash
 npx -y pnpm@10 install --filter "@workspace/cuoco-landing..."
@@ -103,12 +103,9 @@ PORT=1 BASE_PATH=/ npx -y pnpm@10 --filter @workspace/cuoco-landing run build
 
 ## Publishing
 
-Replit publishes whatever is on `main` in its workspace.
+Push to `main`, and the site goes live by itself in a few minutes:
 
-1. Push changes to `main` on GitHub.
-2. In Replit, open the Git pane and **Pull**. The preview updates.
-3. Press **Republish**.
+1. **GitHub Actions** (`.github/workflows/build-for-hostinger.yml`) installs, typechecks and builds the site, then saves the finished files to the **`hostinger`** branch. Never edit that branch by hand — every build replaces it. Progress: the repo's **Actions** tab.
+2. **Hostinger** deploys the `hostinger` branch into `public_html` (hPanel → Advanced → Git, auto-deploy on push).
 
-Replit also commits to this repo itself ("Published your App"), so always pull before starting work, and push anything changed in Replit before editing here.
-
-**Waitlist warning:** the Android waitlist (`artifacts/api-server`) saves emails to a file that is reset whenever the site restarts or is republished. The "new waitlist signup" emails sent to hello@get-cuoco.app are the reliable record. Export the list before republishing.
+The production build reads `artifacts/cuoco-landing/.env.production`: `VITE_API_BASE_URL` points the Android waitlist form at the Cuoco backend (`POST /api/waitlist` in `markberry84/chef_app`). Sign-ups are stored in Supabase (`waitlist_signups`; Table Editor → Export CSV) and each one emails hello@get-cuoco.app through Resend.

@@ -1,0 +1,43 @@
+# get-cuoco.app on Hostinger. Copied into the built site by Vite (public/).
+
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# www → bare domain, and plain http → https. Only for the real domain, so
+# Hostinger's temporary preview address keeps working before the switch.
+RewriteCond %{HTTP_HOST} ^www\.get-cuoco\.app$ [NC]
+RewriteRule ^ https://get-cuoco.app%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^get-cuoco\.app$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://get-cuoco.app%{REQUEST_URI} [L,R=301]
+
+# Clean page addresses. Every page is a ready-made <page>.html
+# (scripts/prerender.mjs), so a new page needs no change here.
+#   /privacy/  → 301 to /privacy
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+#   /privacy   → privacy.html
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^./]+)$ $1.html [L]
+
+# Built scripts and styles have a content hash in their name: cache for a
+# year. Pages always re-check, so a new deploy shows up straight away.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 7 days"
+  ExpiresByType video/webm "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+</IfModule>

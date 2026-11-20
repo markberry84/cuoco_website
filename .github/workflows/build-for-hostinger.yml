@@ -1,0 +1,75 @@
+# Builds the site on every push to main and saves the finished files to the
+# `hostinger` branch. Hostinger deploys that branch into public_html.
+name: Build for Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-for-hostinger
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile --filter "@workspace/cuoco-landing..."
+
+      - name: Typecheck
+        run: pnpm --filter @workspace/cuoco-landing run typecheck
+        env:
+          PORT: "1"
+          BASE_PATH: /
+
+      - name: Build
+        run: pnpm --filter @workspace/cuoco-landing run build
+        env:
+          PORT: "1"
+          BASE_PATH: /
+
+      - name: Check the build
+        run: |
+          cd artifacts/cuoco-landing/dist/public
+          for f in index.html 404.html privacy.html support.html terms.html .htaccess; do
+            test -s "$f" || { echo "Missing $f"; exit 1; }
+          done
+
+      - name: Save to the hostinger branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git clone --quiet --depth 1 --branch hostinger "$REPO" deploy; then
+            :
+          else
+            git init --quiet -b hostinger deploy
+            git -C deploy remote add origin "$REPO"
+          fi
+          rsync -a --delete --exclude .git artifacts/cuoco-landing/dist/public/ deploy/
+          cd deploy
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to the built site."
+            exit 0
+          fi
+          git commit --quiet -m "Build of ${GITHUB_SHA::7}"
+          git push --quiet origin hostinger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
