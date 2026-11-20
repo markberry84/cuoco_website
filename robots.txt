@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://get-cuoco.app/sitemap.xml
