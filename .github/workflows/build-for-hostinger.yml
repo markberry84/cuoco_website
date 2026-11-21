@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the sitemap takes each page's <lastmod> from git log.
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
         with:
